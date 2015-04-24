@@ -1,0 +1,16 @@
+[
+{
+  "modid": "cm",
+  "name": "Mystic Tools Mod",
+  "description": "Adding tons of new stuff!",
+  "version": "v1.1.0.1",
+  "mcversion": "1.7.10",
+  "url": "http://minecraft.curseforge.com/mc-mods/225615-mystic-tools-mod/files",
+  "updateUrl": "",
+  "authorList": ["lillobby6"],
+  "credits": "lillobby6",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
