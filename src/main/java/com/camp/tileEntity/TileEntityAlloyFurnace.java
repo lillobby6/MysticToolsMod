@@ -18,6 +18,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
 import com.camp.block.AlloyFurnace;
+import com.camp.recipe.AlloyFurnaceRecipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -308,7 +309,7 @@ public class TileEntityAlloyFurnace extends TileEntity implements ISidedInventor
 	{
 		if (this.canSmelt())
         {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
+            ItemStack itemstack = AlloyFurnaceRecipes.smelting().getAlloySmeltingResult(this.slots[0]);
 
             if (this.slots[2] == null)
             {
@@ -321,17 +322,17 @@ public class TileEntityAlloyFurnace extends TileEntity implements ISidedInventor
             
 
             --this.slots[0].stackSize;
-            --this.slots[1].stackSize;
+          //  --this.slots[1].stackSize;
 
             if (this.slots[0].stackSize <= 0)
             {
                 this.slots[0] = null;
             }
             
-            if (this.slots[1].stackSize <= 0)
+            /*if (this.slots[1].stackSize <= 0)
             {
             	this.slots[1] = null;
-            }
+            }*/
         }
 		
 	}

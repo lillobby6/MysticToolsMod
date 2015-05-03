@@ -45,6 +45,8 @@ public class Macerator extends BlockContainer{
 		{
 			super(Material.rock);
 			this.isActive = isActive;
+			this.setHardness(15F);
+			this.setResistance(15F);
 			
 		}
 		

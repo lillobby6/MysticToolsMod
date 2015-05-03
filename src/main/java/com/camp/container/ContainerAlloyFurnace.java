@@ -5,10 +5,10 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 
+import com.camp.inventory.SlotAlloyFurnace;
 import com.camp.tileEntity.TileEntityAlloyFurnace;
 
 import cpw.mods.fml.relauncher.Side;
@@ -35,7 +35,7 @@ public class ContainerAlloyFurnace extends Container{
 		this.addSlotToContainer(new Slot(tileentity, 0, 45, 17));
 		this.addSlotToContainer(new Slot(tileentity, 1, 67, 17));
 		this.addSlotToContainer(new Slot(tileentity, 2, 56, 53));
-		this.addSlotToContainer(new SlotFurnace(inventory.player, tileentity, 3, 116, 35));
+		this.addSlotToContainer(new SlotAlloyFurnace(inventory.player, tileentity, 3, 116, 35));
 		
 		for(int i = 0; i < 3; i++)
 		{
