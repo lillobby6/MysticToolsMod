@@ -15,9 +15,9 @@ public class QuadrupleCompressedNetherrack extends Block{
 	protected QuadrupleCompressedNetherrack(Material p_i45394_1_) {
 		super(p_i45394_1_);
 		// TODO Auto-generated constructor stub
-		this.setBlockName("QuadrupleCompressedNetherrack");
+		this.setUnlocalizedName("QuadrupleCompressedNetherrack");
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":quadruple_compressed_netherrack");
+		//this.setBlockTextureName(StringLibrary.MODID + ":quadruple_compressed_netherrack");
 	}
 
 	public void func_77624_a(ItemStack itemStack, EntityPlayer player, List list, boolean p_77624_4_)

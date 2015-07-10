@@ -10,9 +10,9 @@ public class ToslotriumBlock extends Block {
 
 	protected ToslotriumBlock(Material p_i45394_1_) {
 		super(p_i45394_1_);
-		this.setBlockName("ToslotriumBlock");
+		this.setUnlocalizedName("ToslotriumBlock");
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":toslotrium_block");
+		//this.setBlockTextureName(StringLibrary.MODID + ":toslotrium_block");
 	}
 
 }

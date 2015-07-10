@@ -12,7 +12,7 @@ public class TerriumSpade extends ItemSpade{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("TerriumSpade");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":terrium_shovel");
+		//this.setTextureName(StringLibrary.MODID + ":terrium_shovel");
 	}
 
 }

@@ -1,15 +1,12 @@
-package com.camp.dimension;
-
+/*package com.camp.dimension;
+TODO
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.Direction;
 import net.minecraft.util.LongHashMap;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkCoordIntPair;
@@ -17,6 +14,8 @@ import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 
 import com.camp.block.BlockManager;
+import com.sun.xml.internal.ws.handler.HandlerProcessor.Direction;
+
 
 public class TeleporterMystic extends Teleporter {
 	
@@ -34,7 +33,7 @@ public class TeleporterMystic extends Teleporter {
 	
 	public void placeInPortal(Entity entity, double par2, double par4, double par6, float par8){
 		
-		if(this.worldServerInstance.provider.dimensionId != 1){
+		if(this.worldServerInstance.provider.getDimensionId() != 1){
 			if(!this.placeInExistingPortal(entity, par2, par4, par6, par8)){
 				this.makePortal(entity);
 				this.placeInExistingPortal(entity, par2, par4, par6, par8);
@@ -55,7 +54,7 @@ public class TeleporterMystic extends Teleporter {
 						int l1 = j + j1;
 						int i2 = k + i1 * b1 - l * b0;
 						boolean flag = j1 < 0;
-						this.worldServerInstance.setBlock(k1, l1, i2, flag ? BlockManager.toslotriumBlock : Blocks.air);
+						 this.worldServerInstance).setBlock(k1, l1, i2, flag ? BlockManager.toslotriumBlock : Blocks.air);
 					}
 				}
 			}
@@ -81,7 +80,7 @@ public class TeleporterMystic extends Teleporter {
 		if(this.destinationCoordinateCache.containsItem(j1)){
 			TeleporterMystic.PortalPosition portalposition = (Teleporter.PortalPosition)this.destinationCoordinateCache.getValueByKey(j1);
 			d3 = 0.0D;
-			i = portalposition.posX;
+			/i = portalposition.posX;
 			j = portalposition.posY;
 			k = portalposition.posZ;
 			portalposition.lastUpdateTime = this.worldServerInstance.getTotalWorldTime();
@@ -99,7 +98,7 @@ public class TeleporterMystic extends Teleporter {
 					{
 						if(this.worldServerInstance.getBlock(l3, i2, l1) == BlockManager.toslotriumBlock)
 						{
-							while (this.worldServerInstance.getBlock(l3, i2 - 1, l1) == BlockManager.toslotriumBlock)
+					 (this.worldServerInstance.getBlock(l3, i2 - 1, l1) == BlockManager.toslotriumBlock)
 							{
 								i2--;
 							}
@@ -474,7 +473,7 @@ public class TeleporterMystic extends Teleporter {
 	/**
      * called periodically to remove out-of-date portal locations from the cache list. Argument par1 is a
      * WorldServer.getTotalWorldTime() value.
-     */
+     *
     public void removeStalePortalLocations(long p_85189_1_)
     {
         if (p_85189_1_ % 100L == 0L)
@@ -500,3 +499,4 @@ public class TeleporterMystic extends Teleporter {
 	
 		
 }
+*/

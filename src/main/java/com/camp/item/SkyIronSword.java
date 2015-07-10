@@ -11,7 +11,7 @@ public class SkyIronSword extends ItemSword{
 		super(p_i45356_1_);
 		this.setUnlocalizedName("SkyIronSword");
 		this.setCreativeTab(CreativeTabsManager.tabMysticCombat);
-		this.setTextureName(StringLibrary.MODID + ":sky_iron_sword");
+		//this.setTextureName(StringLibrary.MODID + ":sky_iron_sword");
 	}
 
 }

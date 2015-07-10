@@ -11,5 +11,6 @@ public class ToolMaterials {
 	public static ToolMaterial SKYIRON = EnumHelper.addToolMaterial("SKYIRON", 4, 600, 4f, 3.0f, 7);
 	public static ToolMaterial BRIGHTFLAME = EnumHelper.addToolMaterial("BRIGHTFLAME", 6, 13000, 25.0f, 9.0f, 25);
 	public static ToolMaterial MORTIUM = EnumHelper.addToolMaterial("MORTIUM", 4, 2161, 9.0F, 4.0F, 13);
+	public static ToolMaterial VIVIDIUM = EnumHelper.addToolMaterial("VIVIDIUM", 4, 2161, 9.0F, 4.0F, 13);
 
 }

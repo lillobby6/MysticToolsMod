@@ -11,7 +11,7 @@ public class MagicSpade extends ItemSpade{
 		super(p_i45353_1_);
 		this.setUnlocalizedName("MagicSpade");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":magic_shovel");
+		//this.setTextureName(StringLibrary.MODID + ":magic_shovel");
 	}
 
 }

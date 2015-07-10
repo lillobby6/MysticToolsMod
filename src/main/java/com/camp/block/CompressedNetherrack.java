@@ -5,7 +5,6 @@ import java.util.List;
 import net.minecraft.block.Block;
 //imports the code to be used
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
@@ -19,11 +18,11 @@ extends Block /**Extends this class from the class net.minecraft.block.Block*/{
 	/**constructor for creating "CompressedNetherrack"
 	 */
 		super(material /**creates variable name "material"*/);
-		this.setBlockName("CompressedNetherrack");
+		this.setUnlocalizedName("CompressedNetherrack");
 		/**Name the block's code name*/
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
 		/**Sets the creative tab*/
-		this.setBlockTextureName(StringLibrary.MODID + ":compressed_netherrack");
+		//this.setBlockTextureName(StringLibrary.MODID + ":compressed_netherrack");
 		/**sets the texture using the MODID + the texture name with a :*/
 		this.setHardness(1f);
 		//sets the block's hardness when broken

@@ -1,7 +1,5 @@
 package com.camp.entity;
 
-import java.util.Random;
-
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -25,7 +23,7 @@ public class EntityToslotriumOreMob extends EntityAnimal{
 		this.tasks.addTask(2, new EntityAILookIdle(this));
 		this.tasks.addTask(4, new EntityAITempt(this, 1.2D, ItemManager.toslotriumIngot, false));
 		this.tasks.addTask(5, new EntityAISwimming(this));
-		this.getNavigator().setAvoidsWater(true);
+		//this.getNavigator().setAvoidsWater(true);
 	}
 	public boolean isAIEnabled()
 	{

@@ -12,7 +12,7 @@ public class MysticHoe extends ItemHoe{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("MysticHoe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":mystic_hoe");
+		//this.setTextureName(StringLibrary.MODID + ":mystic_hoe");
 	}
 
 }

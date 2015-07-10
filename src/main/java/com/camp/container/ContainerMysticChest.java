@@ -27,7 +27,7 @@ public class ContainerMysticChest extends Container {
 		this.mysticChest = entity;
         this.chestInventory = in1;
         this.numRows = in1.getSizeInventory() / 9;
-        in1.openInventory();
+      //  in1.openInventory();
         int i = (this.numRows - 4) * 18;
         int j;
         int k;
@@ -92,6 +92,6 @@ public class ContainerMysticChest extends Container {
 	public void onContainerClosed(EntityPlayer p_75134_1_)
     {
         super.onContainerClosed(p_75134_1_);
-        this.chestInventory.closeInventory();
+       // this.chestInventory.closeInventory();
     }
 }

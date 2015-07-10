@@ -8,21 +8,19 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.camp.block.AlloyFurnace;
 import com.camp.recipe.AlloyFurnaceRecipes;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityAlloyFurnace extends TileEntity implements ISidedInventory{
 
@@ -200,22 +198,23 @@ public class TileEntityAlloyFurnace extends TileEntity implements ISidedInventor
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
+		return tileEntityInvalid;
 
-		 return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : entityplayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		// return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : entityplayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	@Override
-	public void openInventory() {}
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
-	public void closeInventory() {}
+	public void closeInventory(EntityPlayer player) {}
 	
 	public boolean isBurning()
 	{
 		return this.burnTime > 0;
 	}
 	
-	@Override
+	//@Override
 	public void updateEntity()
     {
         boolean flag = this.burnTime > 0;
@@ -270,7 +269,7 @@ public class TileEntityAlloyFurnace extends TileEntity implements ISidedInventor
             if (flag != this.burnTime > 0)
             {
                 flag1 = true;
-                AlloyFurnace.updateAlloyFurnaceBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                //AlloyFurnace.updateAlloyFurnaceBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
 
@@ -296,13 +295,14 @@ public class TileEntityAlloyFurnace extends TileEntity implements ISidedInventor
 		}
         else
         {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
-            if (itemstack == null) return false;
+            //temStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
+            //if (itemstack == null) return false;
             if (this.slots[2] == null) return true;
-            if (!this.slots[2].isItemEqual(itemstack)) return false;
-            int result = slots[2].stackSize + itemstack.stackSize;
-            return result <= getInventoryStackLimit() && result <= this.slots[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
+            //if (!this.slots[2].isItemEqual(itemstack)) return false;
+           // int result = slots[2].stackSize + itemstack.stackSize;
+            //return result <= getInventoryStackLimit() && result <= this.slots[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
+		return tileEntityInvalid;
 	}
 	
 	public void smeltItem()
@@ -370,7 +370,7 @@ public class TileEntityAlloyFurnace extends TileEntity implements ISidedInventor
 
 	            if (item instanceof ItemTool && ((ItemTool)item).getToolMaterialName().equals("WOOD")) return 200;
 	            if (item instanceof ItemSword && ((ItemSword)item).getToolMaterialName().equals("WOOD")) return 200;
-	            if (item instanceof ItemHoe && ((ItemHoe)item).getToolMaterialName().equals("WOOD")) return 200;
+	           // if (item instanceof ItemHoe && ((ItemHoe)item).getToolMaterialName().equals("WOOD")) return 200;
 	            if (item == Items.stick) return 100;
 	            if (item == Items.coal) return 1600;
 	            if (item == Items.lava_bucket) return 20000;
@@ -390,23 +390,23 @@ public class TileEntityAlloyFurnace extends TileEntity implements ISidedInventor
 		return i == 2 ? false : (i == 1 ? isItemFuel(itemstack) : true);
 	}
 
-	@Override
+	//@Override
 	public int[] getAccessibleSlotsFromSide(int var1) {
 		return var1 == 0 ? slots_bottom : (var1 == 1 ? slots_top : slots_sides);
 	}
 
-	@Override
-	public boolean canInsertItem(int i, ItemStack  itemstack,
-			int j) {
+	//@Override
+	public boolean canInsertItem(int i, ItemStack stack,
+			EnumFacing direction) {
 			
-		return this.isItemValidForSlot(i, itemstack);
+		return this.isItemValidForSlot(i, stack);
 	}
 
 	@Override
-	public boolean canExtractItem(int i, ItemStack itemstack,
-			int j) {
+	public boolean canExtractItem(int i, ItemStack stack,
+			EnumFacing jx) {
 
-		return j != 0 || i != 1 || itemstack.getItem() == Items.bucket;
+		return i != 0 || i != 1 || stack.getItem() == Items.bucket;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -423,5 +423,57 @@ public class TileEntityAlloyFurnace extends TileEntity implements ISidedInventor
 	{
 		return this.cookTime * i / this.furnaceSpeed;
 	}
+
+	@Override
+	public int getField(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getSlotsForFace(EnumFacing side) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	
 }
 

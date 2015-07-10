@@ -13,7 +13,7 @@ public class MysticSpade extends ItemSpade{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("MysticSpade");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":mystic_shovel");
+		//this.setTextureName(StringLibrary.MODID + ":mystic_shovel");
 	}
 
 }

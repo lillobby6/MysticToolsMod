@@ -12,7 +12,7 @@ public class TerriumSword extends ItemSword {
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("TerriumSword");
 		this.setCreativeTab(CreativeTabsManager.tabMysticCombat);
-		this.setTextureName(StringLibrary.MODID + ":terrium_sword");
+		//this.setTextureName(StringLibrary.MODID + ":terrium_sword");
 	}
 
 }

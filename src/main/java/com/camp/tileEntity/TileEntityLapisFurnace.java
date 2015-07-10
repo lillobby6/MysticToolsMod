@@ -8,16 +8,14 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-
-import com.camp.block.LapisFurnace;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityLapisFurnace extends TileEntity implements ISidedInventory{
 
@@ -194,14 +192,15 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
+		return tileEntityInvalid;
 
-		 return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : entityplayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		// return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : entityplayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
-	@Override
+	//@Override
 	public void openInventory() {}
 
-	@Override
+	//@Override
 	public void closeInventory() {}
 	
 	public boolean isBurning()
@@ -271,7 +270,7 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 		}
 		
 	}*/
-	@Override
+	//@Override
 	public void updateEntity()
     {
         boolean flag = this.burnTime > 0;
@@ -326,7 +325,7 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
             if (flag != this.burnTime > 0)
             {
                 flag1 = true;
-                LapisFurnace.updateLapisFurnaceBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+               // LapisFurnace.updateLapisFurnaceBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
 
@@ -344,29 +343,30 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
         }
         else
         {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
-            if (itemstack == null) return false;
-            if (this.slots[2] == null) return true;
-            if (!this.slots[2].isItemEqual(itemstack)) return false;
-            int result = slots[2].stackSize + itemstack.stackSize;
-            return result <= getInventoryStackLimit() && result <= this.slots[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
+            //ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
+           // if (itemstack == null) return false;
+            //if (this.slots[2] == null) return true;
+           // if (!this.slots[2].isItemEqual(itemstack)) return false;
+           // int result = slots[2].stackSize + itemstack.stackSize;
+           // result <= getInventoryStackLimit() && result <= this.slots[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
+		return tileEntityInvalid;
 	}
 	
 	public void smeltItem()
 	{
 		if (this.canSmelt())
         {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
+            //ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
 
             if (this.slots[2] == null)
             {
-                this.slots[2] = itemstack.copy();
+               // this.slots[2] = itemstack.copy();
             }
-            else if (this.slots[2].getItem() == itemstack.getItem())
-            {
-                this.slots[2].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
-            }
+           // else if (this.slots[2].getItem() == itemstack.getItem())
+            //{
+           //     this.slots[2].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
+           // }
 
             --this.slots[0].stackSize;
 
@@ -432,19 +432,19 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 		return i == 2 ? false : (i == 1 ? isItemFuel(itemstack) : true);
 	}
 
-	@Override
+	//@Override
 	public int[] getAccessibleSlotsFromSide(int var1) {
 		return var1 == 0 ? slots_bottom : (var1 == 1 ? slots_top : slots_sides);
 	}
 
-	@Override
+	//@Override
 	public boolean canInsertItem(int i, ItemStack  itemstack,
 			int j) {
 			
 		return this.isItemValidForSlot(i, itemstack);
 	}
 
-	@Override
+	//@Override
 	public boolean canExtractItem(int i, ItemStack itemstack,
 			int j) {
 
@@ -464,6 +464,80 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 	public int getCookProgressScaled(int i)
 	{
 		return this.cookTime * i / this.furnaceSpeed;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getField(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getSlotsForFace(EnumFacing side) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean canInsertItem(int index, ItemStack itemStackIn,
+			EnumFacing direction) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canExtractItem(int index, ItemStack stack,
+			EnumFacing direction) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
 

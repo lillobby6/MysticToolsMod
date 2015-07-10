@@ -6,16 +6,14 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
-
-import com.camp.block.Macerator;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityMacerator extends TileEntity implements ISidedInventory{
 
@@ -192,14 +190,15 @@ public class TileEntityMacerator extends TileEntity implements ISidedInventory{
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
+		return tileEntityInvalid;
 
-		 return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : entityplayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		// return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : entityplayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
-	@Override
+	//@Override
 	public void openInventory() {}
 
-	@Override
+	//@Override
 	public void closeInventory() {}
 	
 	public boolean hasPower()
@@ -208,7 +207,7 @@ public class TileEntityMacerator extends TileEntity implements ISidedInventory{
 	}
 	
 	
-	@Override
+	//@Override
 	public void updateEntity()
     {
         boolean flag = this.power > 0;
@@ -256,7 +255,7 @@ public class TileEntityMacerator extends TileEntity implements ISidedInventory{
             if(flag != this.hasPower())
             {
             	flag1 = true;
-            	Macerator.updateMaceratorBlockState(this.hasPower(), this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+            //	Macerator.updateMaceratorBlockState(this.hasPower(), this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
 
         }
@@ -291,14 +290,15 @@ public class TileEntityMacerator extends TileEntity implements ISidedInventory{
         }
         else
         {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
-            if (itemstack == null) return false;
+           // ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
+            //if (itemstack == null) return false;
             if (!this.isOre(this.slots[0])) return false;
             if (this.slots[2] == null) return true;
-            if (!this.slots[2].isItemEqual(itemstack)) return false;
-            int result = slots[2].stackSize + itemstack.stackSize * 2;
-            return result <= getInventoryStackLimit() && result <= this.slots[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
+           // if (!this.slots[2].isItemEqual(itemstack)) return false;
+           // int result = slots[2].stackSize + itemstack.stackSize * 2;
+            //r//eturn result <= getInventoryStackLimit() && result <= this.slots[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
+		return tileEntityInvalid;
 	}
 	
 	
@@ -308,17 +308,17 @@ public class TileEntityMacerator extends TileEntity implements ISidedInventory{
 		
 		if (this.canMacerate())
         {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
+           // ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
 
             if (this.slots[2] == null)
             {
-                this.slots[2] = itemstack.copy();
+           //     this.slots[2] = itemstack.copy();
                 this.slots[2].stackSize*=2;
             }
-            else if (this.slots[2].getItem() == itemstack.getItem())
-            {
-                this.slots[2].stackSize += itemstack.stackSize*2; // Forge BugFix: Results may have multiple items
-            }
+          //  else if (this.slots[2].getItem() == itemstack.getItem())
+           // {
+          //      this.slots[2].stackSize += itemstack.stackSize*2; // Forge BugFix: Results may have multiple items
+          //  }
 
             --this.slots[0].stackSize;
 
@@ -362,19 +362,19 @@ public class TileEntityMacerator extends TileEntity implements ISidedInventory{
 		return i == 2 ? false : (i == 1 ? hasItemPower(itemstack) : true);
 	}
 
-	@Override
+	//@Override
 	public int[] getAccessibleSlotsFromSide(int var1) {
 		return var1 == 0 ? slots_bottom : (var1 == 1 ? slots_top : slots_sides);
 	}
 
-	@Override
+	//@Override
 	public boolean canInsertItem(int i, ItemStack  itemstack,
 			int j) {
 			
 		return this.isItemValidForSlot(i, itemstack);
 	}
 
-	@Override
+	//@Override
 	public boolean canExtractItem(int i, ItemStack itemstack,
 			int j) {
 
@@ -394,5 +394,79 @@ public class TileEntityMacerator extends TileEntity implements ISidedInventory{
 	public int getMacerationProgressScaled(int i)
 	{
 		return this.cookTime * i / this.maceratingSpeed;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getField(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getSlotsForFace(EnumFacing side) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean canInsertItem(int index, ItemStack itemStackIn,
+			EnumFacing direction) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canExtractItem(int index, ItemStack stack,
+			EnumFacing direction) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

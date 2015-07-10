@@ -12,7 +12,7 @@ public class MagicPickaxe extends ItemPickaxe{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("MagicPickaxe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":magic_pickaxe");
+		//this.setTextureName(StringLibrary.MODID + ":magic_pickaxe");
 	}
 
 }

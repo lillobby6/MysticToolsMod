@@ -19,7 +19,7 @@ public class MysticApple extends ItemFood{
 		this.setAlwaysEdible();
 		this.setUnlocalizedName("MysticApple");
 		this.setCreativeTab(CreativeTabsManager.tabMysticFoods);
-		this.setTextureName(StringLibrary.MODID + ":apple_diamond");
+		//this.setTextureName(StringLibrary.MODID + ":apple_diamond");
 		
 	}
 	@Override
@@ -31,7 +31,7 @@ public class MysticApple extends ItemFood{
 			player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 6000, 3));
 			player.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 6000, 3));
 			player.addPotionEffect(new PotionEffect(Potion.fireResistance.getId(), 6000, 3));
-			/*absorption*/ player.addPotionEffect(new PotionEffect(Potion.field_76444_x.id, 6000, 1)); //absorption
+			/*absorption*/ player.addPotionEffect(new PotionEffect(Potion.absorption.id, 6000, 1)); //absorption
 			player.addExperience(100);
 		}
 	}

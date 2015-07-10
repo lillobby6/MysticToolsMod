@@ -140,6 +140,6 @@ public class MysticGenLayerBiome extends GenLayer
         List<BiomeEntry> biomeList = biomes[type.ordinal()];
         int totalWeight = WeightedRandom.getTotalWeight(biomeList);
         int weight = BiomeManager.isTypeListModded(type)?nextInt(totalWeight):nextInt(totalWeight / 10) * 10;
-        return (BiomeEntry)WeightedRandom.getItem(biomeList, weight);
+        return (BiomeEntry)WeightedRandom.getRandomItem(biomeList, weight);
     }
 }

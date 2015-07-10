@@ -10,6 +10,6 @@ public class GoldenStick extends Item{
 	public GoldenStick(){
 		this.setUnlocalizedName("GoldenStick");
 		this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-		this.setTextureName(StringLibrary.MODID + ":golden_stick");
+		//this.setTextureName(StringLibrary.MODID + ":golden_stick");
 	}
 }

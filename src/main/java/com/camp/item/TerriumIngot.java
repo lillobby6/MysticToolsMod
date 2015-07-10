@@ -10,6 +10,6 @@ public class TerriumIngot extends Item{
 	{
 		this.setUnlocalizedName("TerriumIngot");
 		this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-		this.setTextureName(StringLibrary.MODID +":terrium_ingot");
+		//this.setTextureName(StringLibrary.MODID +":terrium_ingot");
 	}
 }

@@ -4,16 +4,13 @@ import net.minecraft.item.Item;
 
 import com.camp.creativetabs.CreativeTabsManager;
 import com.camp.lib.ArmorMaterials;
-import com.camp.lib.StringLibrary;
 import com.camp.lib.ToolMaterials;
 import com.camp.main.MainRegistry;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ItemManager {
     public static void mainRegistry() {
         initializeItem();
-        registerItem();
+        //registerItem();
     }
     
     /***/
@@ -163,6 +160,18 @@ public class ItemManager {
 	//End Armor
 	/***/
 	
+	public static Item vividiumPickaxe;
+	public static Item vividiumAxe;
+	public static Item vividiumSpade;
+	public static Item vividiumSword;
+	public static Item vividiumHoe;
+	
+	public static Item mortiumPickaxe;
+	public static Item mortiumAxe;
+	public static Item mortiumSpade;
+	public static Item mortiumSword;
+	public static Item mortiumHoe;
+	
     public static void initializeItem() {
     	mysticIngot = new MysticIngot();
     	mysticApple = new MysticApple(20, 10f, false);
@@ -200,25 +209,25 @@ public class ItemManager {
     	magicHoe = new MagicHoe(ToolMaterials.MAGIC);
     	magicSword = new MagicSword(ToolMaterials.MAGIC);
     	
-    	lavaInfusedDiamondHelmet = new LavaInfusedDiamondArmor(ArmorMaterials.INFUSEDDIAMONDARMOR, MainRegistry.proxy.addArmor("LavaInfusedDiamondHelmet"), 0).setUnlocalizedName("LavaInfusedDiamondHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":lava_infused_diamond_helmet");				
-    	lavaInfusedDiamondChestplate = new LavaInfusedDiamondArmor(ArmorMaterials.INFUSEDDIAMONDARMOR, MainRegistry.proxy.addArmor("LavaInfusedDiamondChestplate"), 1).setUnlocalizedName("LavaInfusedDiamondChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":lava_infused_diamond_chestplate");			
-    	lavaInfusedDiamondLeggings = new LavaInfusedDiamondArmor(ArmorMaterials.INFUSEDDIAMONDARMOR, MainRegistry.proxy.addArmor("LavaInfusedDiamondLeggings"), 2).setUnlocalizedName("LavaInfusedDiamondLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":lava_infused_diamond_leggings");
-    	lavaInfusedDiamondBoots = new LavaInfusedDiamondArmor(ArmorMaterials.INFUSEDDIAMONDARMOR, MainRegistry.proxy.addArmor("LavaInfusedDiamondBoots"), 3).setUnlocalizedName("LavaInfusedDiamondBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":lava_infused_diamond_boots");
+    	lavaInfusedDiamondHelmet = new LavaInfusedDiamondArmor(ArmorMaterials.INFUSEDDIAMONDARMOR, MainRegistry.proxy.addArmor("LavaInfusedDiamondHelmet"), 0).setUnlocalizedName("LavaInfusedDiamondHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat)/*.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_helmet")*/;				
+    	lavaInfusedDiamondChestplate = new LavaInfusedDiamondArmor(ArmorMaterials.INFUSEDDIAMONDARMOR, MainRegistry.proxy.addArmor("LavaInfusedDiamondChestplate"), 1).setUnlocalizedName("LavaInfusedDiamondChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_chestplate");			
+    	lavaInfusedDiamondLeggings = new LavaInfusedDiamondArmor(ArmorMaterials.INFUSEDDIAMONDARMOR, MainRegistry.proxy.addArmor("LavaInfusedDiamondLeggings"), 2).setUnlocalizedName("LavaInfusedDiamondLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_leggings");
+    	lavaInfusedDiamondBoots = new LavaInfusedDiamondArmor(ArmorMaterials.INFUSEDDIAMONDARMOR, MainRegistry.proxy.addArmor("LavaInfusedDiamondBoots"), 3).setUnlocalizedName("LavaInfusedDiamondBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_boots");
     	terriumIngot = new TerriumIngot();
     	terriumPickaxe = new TerriumPickaxe(ToolMaterials.TERRIUM);
     	terriumAxe = new TerriumAxe(ToolMaterials.TERRIUM);
     	terriumSpade = new TerriumSpade(ToolMaterials.TERRIUM);
-    	terriumHelmet = new TerriumArmor(ArmorMaterials.TERRIUMARMOR, MainRegistry.proxy.addArmor("TerriumHelmet"), 0).setUnlocalizedName("TerriumHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":terrium_helmet");				
-    	terriumChestplate = new TerriumArmor(ArmorMaterials.TERRIUMARMOR, MainRegistry.proxy.addArmor("TerriumChestplate"), 1).setUnlocalizedName("TerriumChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":terrium_chestplate");			
-    	terriumLeggings = new TerriumArmor(ArmorMaterials.TERRIUMARMOR, MainRegistry.proxy.addArmor("TerriumLeggings"), 2).setUnlocalizedName("TerriumLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":terrium_leggings");			
-    	terriumBoots = new TerriumArmor(ArmorMaterials.TERRIUMARMOR, MainRegistry.proxy.addArmor("TerriumBoots"), 3).setUnlocalizedName("TerriumBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":terrium_boots");			
+    	terriumHelmet = new TerriumArmor(ArmorMaterials.TERRIUMARMOR, MainRegistry.proxy.addArmor("TerriumHelmet"), 0).setUnlocalizedName("TerriumHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":terrium_helmet");				
+    	terriumChestplate = new TerriumArmor(ArmorMaterials.TERRIUMARMOR, MainRegistry.proxy.addArmor("TerriumChestplate"), 1).setUnlocalizedName("TerriumChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":terrium_chestplate");			
+    	terriumLeggings = new TerriumArmor(ArmorMaterials.TERRIUMARMOR, MainRegistry.proxy.addArmor("TerriumLeggings"), 2).setUnlocalizedName("TerriumLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":terrium_leggings");			
+    	terriumBoots = new TerriumArmor(ArmorMaterials.TERRIUMARMOR, MainRegistry.proxy.addArmor("TerriumBoots"), 3).setUnlocalizedName("TerriumBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":terrium_boots");			
     	terriumHoe = new TerriumHoe(ToolMaterials.TERRIUM);
     	terriumSword = new TerriumSword(ToolMaterials.TERRIUM);
     	
-    	mysticHelmet = new MysticArmor(ArmorMaterials.MYSTICARMOR, MainRegistry.proxy.addArmor("MysticHelmet"), 0).setUnlocalizedName("MysticHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":mystic_helmet");				
-    	mysticChestplate = new MysticArmor(ArmorMaterials.MYSTICARMOR, MainRegistry.proxy.addArmor("MysticChestplate"), 1).setUnlocalizedName("MysticChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":mystic_chestplate");			
-    	mysticLeggings = new MysticArmor(ArmorMaterials.MYSTICARMOR, MainRegistry.proxy.addArmor("MysticLeggings"), 2).setUnlocalizedName("MysticLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":mystic_leggings");			
-    	mysticBoots = new MysticArmor(ArmorMaterials.MYSTICARMOR, MainRegistry.proxy.addArmor("MysticBoots"), 3).setUnlocalizedName("MysticBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":mystic_boots");
+    	mysticHelmet = new MysticArmor(ArmorMaterials.MYSTICARMOR, MainRegistry.proxy.addArmor("MysticHelmet"), 0).setUnlocalizedName("MysticHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat);//./setTextureName(StringLibrary.MODID + ":mystic_helmet");				
+    	mysticChestplate = new MysticArmor(ArmorMaterials.MYSTICARMOR, MainRegistry.proxy.addArmor("MysticChestplate"), 1).setUnlocalizedName("MysticChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":mystic_chestplate");			
+    	mysticLeggings = new MysticArmor(ArmorMaterials.MYSTICARMOR, MainRegistry.proxy.addArmor("MysticLeggings"), 2).setUnlocalizedName("MysticLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":mystic_leggings");			
+    	mysticBoots = new MysticArmor(ArmorMaterials.MYSTICARMOR, MainRegistry.proxy.addArmor("MysticBoots"), 3).setUnlocalizedName("MysticBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":mystic_boots");
     	mysticStick = new MysticStick();
     	
     	
@@ -226,15 +235,15 @@ public class ItemManager {
     	
     	skyIronIngot = new SkyIronIngot();
     	
-    	stoneHelmet = new StoneArmor(ArmorMaterials.STONEARMOR, MainRegistry.proxy.addArmor("StoneHelmet"), 0).setUnlocalizedName("StoneHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":stone_helmet");				
-    	stoneChestplate = new StoneArmor(ArmorMaterials.STONEARMOR, MainRegistry.proxy.addArmor("StoneChestplate"), 1).setUnlocalizedName("StoneChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":stone_chestplate");			
-    	stoneLeggings = new StoneArmor(ArmorMaterials.STONEARMOR, MainRegistry.proxy.addArmor("StoneLeggings"), 2).setUnlocalizedName("StoneLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":stone_leggings");			
-    	stoneBoots = new StoneArmor(ArmorMaterials.STONEARMOR, MainRegistry.proxy.addArmor("StoneBoots"), 3).setUnlocalizedName("StoneBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":stone_boots");
+    	stoneHelmet = new StoneArmor(ArmorMaterials.STONEARMOR, MainRegistry.proxy.addArmor("StoneHelmet"), 0).setUnlocalizedName("StoneHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":stone_helmet");				
+    	stoneChestplate = new StoneArmor(ArmorMaterials.STONEARMOR, MainRegistry.proxy.addArmor("StoneChestplate"), 1).setUnlocalizedName("StoneChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":stone_chestplate");			
+    	stoneLeggings = new StoneArmor(ArmorMaterials.STONEARMOR, MainRegistry.proxy.addArmor("StoneLeggings"), 2).setUnlocalizedName("StoneLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":stone_leggings");			
+    	stoneBoots = new StoneArmor(ArmorMaterials.STONEARMOR, MainRegistry.proxy.addArmor("StoneBoots"), 3).setUnlocalizedName("StoneBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":stone_boots");
 
-    	skyIronHelmet = new SkyIronArmor(ArmorMaterials.SKYIRONARMOR, MainRegistry.proxy.addArmor("SkyIronHelmet"), 0).setUnlocalizedName("SkyIronHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":sky_iron_helmet");				
-    	skyIronChestplate = new SkyIronArmor(ArmorMaterials.SKYIRONARMOR, MainRegistry.proxy.addArmor("SkyIronChestplate"), 1).setUnlocalizedName("SkyIronChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":sky_iron_chestplate");			
-    	skyIronLeggings = new SkyIronArmor(ArmorMaterials.SKYIRONARMOR, MainRegistry.proxy.addArmor("SkyIronLeggings"), 2).setUnlocalizedName("SkyIronLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":sky_iron_leggings");			
-    	skyIronBoots = new SkyIronArmor(ArmorMaterials.SKYIRONARMOR, MainRegistry.proxy.addArmor("SkyIronBoots"), 3).setUnlocalizedName("SkyIronBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":sky_iron_boots");
+    	skyIronHelmet = new SkyIronArmor(ArmorMaterials.SKYIRONARMOR, MainRegistry.proxy.addArmor("SkyIronHelmet"), 0).setUnlocalizedName("SkyIronHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":sky_iron_helmet");				
+    	skyIronChestplate = new SkyIronArmor(ArmorMaterials.SKYIRONARMOR, MainRegistry.proxy.addArmor("SkyIronChestplate"), 1).setUnlocalizedName("SkyIronChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":sky_iron_chestplate");			
+    	skyIronLeggings = new SkyIronArmor(ArmorMaterials.SKYIRONARMOR, MainRegistry.proxy.addArmor("SkyIronLeggings"), 2).setUnlocalizedName("SkyIronLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":sky_iron_leggings");			
+    	skyIronBoots = new SkyIronArmor(ArmorMaterials.SKYIRONARMOR, MainRegistry.proxy.addArmor("SkyIronBoots"), 3).setUnlocalizedName("SkyIronBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":sky_iron_boots");
 
     	skyIronPickaxe = new SkyIronPickaxe(ToolMaterials.SKYIRON);
     	skyIronAxe = new SkyIronAxe(ToolMaterials.SKYIRON);
@@ -243,34 +252,46 @@ public class ItemManager {
     	skyIronHoe = new SkyIronHoe(ToolMaterials.SKYIRON);
     	
     	toslotriumIngot = new ToslotriumIngot();
-    	magicHelmet = new MagicArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("MagicHelmet"), 0).setUnlocalizedName("MagicHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":magic_helmet");				
-    	magicChestplate = new MagicArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("MagicChestplate"), 1).setUnlocalizedName("MagicChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":magic_chestplate");			
-    	magicLeggings = new MagicArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("MagicLeggings"), 2).setUnlocalizedName("MagicLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":magic_leggings");			
-    	magicBoots = new MagicArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("MagicBoots"), 3).setUnlocalizedName("MagicBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":magic_boots");
+    	magicHelmet = new MagicArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("MagicHelmet"), 0).setUnlocalizedName("MagicHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":magic_helmet");				
+    	magicChestplate = new MagicArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("MagicChestplate"), 1).setUnlocalizedName("MagicChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":magic_chestplate");			
+    	magicLeggings = new MagicArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("MagicLeggings"), 2).setUnlocalizedName("MagicLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":magic_leggings");			
+    	magicBoots = new MagicArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("MagicBoots"), 3).setUnlocalizedName("MagicBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":magic_boots");
     	brightflamePickaxe = new BrightflamePickaxe(ToolMaterials.BRIGHTFLAME);
     	brightflameAxe = new BrightflameAxe(ToolMaterials.BRIGHTFLAME);
     	brightflameSpade = new BrightflameSpade(ToolMaterials.BRIGHTFLAME);
     	brightflameHoe = new BrightflameHoe(ToolMaterials.BRIGHTFLAME);
     	brightflameSword = new BrightflameSword(ToolMaterials.BRIGHTFLAME);
-    	brightflameHelmet = new BrightflameArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("BrightflameHelmet"), 0).setUnlocalizedName("BrightflameHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":brightflame_helmet");				
-    	brightflameChestplate = new BrightflameArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("BrightflameChestplate"), 1).setUnlocalizedName("BrightflameChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":brightflame_chestplate");			
-    	brightflameLeggings = new BrightflameArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("BrightflameLeggings"), 2).setUnlocalizedName("BrightflameLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":brightflame_leggings");			
-    	brightflameBoots = new BrightflameArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("BrightflameBoots"), 3).setUnlocalizedName("BrightflameBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":brightflame_boots");
+    	brightflameHelmet = new BrightflameArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("BrightflameHelmet"), 0).setUnlocalizedName("BrightflameHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":brightflame_helmet");				
+    	brightflameChestplate = new BrightflameArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("BrightflameChestplate"), 1).setUnlocalizedName("BrightflameChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":brightflame_chestplate");			
+    	brightflameLeggings = new BrightflameArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("BrightflameLeggings"), 2).setUnlocalizedName("BrightflameLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":brightflame_leggings");			
+    	brightflameBoots = new BrightflameArmor(ArmorMaterials.MAGICARMOR, MainRegistry.proxy.addArmor("BrightflameBoots"), 3).setUnlocalizedName("BrightflameBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":brightflame_boots");
 
     	brightsteelIngot = new BrightsteelIngot();
     	mortiumIngot = new MortiumIngot();
-    	mortiumHelmet = new BrightflameArmor(ArmorMaterials.MORTIUMARMOR, MainRegistry.proxy.addArmor("MortiumHelmet"), 0).setUnlocalizedName("MortiumHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":mortium_helmet");				
-    	mortiumChestplate = new BrightflameArmor(ArmorMaterials.MORTIUMARMOR, MainRegistry.proxy.addArmor("MortiumChestplate"), 1).setUnlocalizedName("MortiumChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":mortium_chestplate");			
-    	mortiumLeggings = new BrightflameArmor(ArmorMaterials.MORTIUMARMOR, MainRegistry.proxy.addArmor("MortiumLeggings"), 2).setUnlocalizedName("MortiumLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":mortium_leggings");			
-    	mortiumBoots = new BrightflameArmor(ArmorMaterials.MORTIUMARMOR, MainRegistry.proxy.addArmor("MortiumBoots"), 3).setUnlocalizedName("MortiumBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":mortium_boots");
-    	justice = new Justice(ToolMaterials.MAGIC).setUnlocalizedName("Justice").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":justice");
-    	corruption = new Justice(ToolMaterials.MAGIC).setUnlocalizedName("Corruption").setCreativeTab(CreativeTabsManager.tabMysticCombat).setTextureName(StringLibrary.MODID + ":corruption");
+    	mortiumHelmet = new BrightflameArmor(ArmorMaterials.MORTIUMARMOR, MainRegistry.proxy.addArmor("MortiumHelmet"), 0).setUnlocalizedName("MortiumHelmet").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":mortium_helmet");				
+    	mortiumChestplate = new BrightflameArmor(ArmorMaterials.MORTIUMARMOR, MainRegistry.proxy.addArmor("MortiumChestplate"), 1).setUnlocalizedName("MortiumChestplate").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":mortium_chestplate");			
+    	mortiumLeggings = new BrightflameArmor(ArmorMaterials.MORTIUMARMOR, MainRegistry.proxy.addArmor("MortiumLeggings"), 2).setUnlocalizedName("MortiumLeggings").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":mortium_leggings");			
+    	mortiumBoots = new BrightflameArmor(ArmorMaterials.MORTIUMARMOR, MainRegistry.proxy.addArmor("MortiumBoots"), 3).setUnlocalizedName("MortiumBoots").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":mortium_boots");
+    	justice = new Justice(ToolMaterials.MAGIC).setUnlocalizedName("Justice").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":justice");
+    	corruption = new Justice(ToolMaterials.MAGIC).setUnlocalizedName("Corruption").setCreativeTab(CreativeTabsManager.tabMysticCombat);//.setTextureName(StringLibrary.MODID + ":corruption");
     	backpack = new Backpack(ArmorMaterials.backpackMaterial, backpackRenderIndex, 1).setUnlocalizedName("Backpack").setCreativeTab(CreativeTabsManager.tabStorage);
     
     	vividiumIngot = new VividiumIngot();
+    	
+    	vividiumPickaxe = new VividiumMortiumPickaxe(ToolMaterials.MORTIUM).setUnlocalizedName("VividiumPickaxe");//.setTextureName(StringLibrary.MODID + ":vividium_pickaxe");
+    	vividiumAxe = new VivdiumMortiumAxe(ToolMaterials.MORTIUM).setUnlocalizedName("VividiumAxe");//;.setTextureName(StringLibrary.MODID + ":vividium_axe");
+    	vividiumSpade = new VividiumMortiumSpade(ToolMaterials.MORTIUM).setUnlocalizedName("VividiumSpade");//.setTextureName(StringLibrary.MODID + ":vividium_shovel");
+    	vividiumSword = new VividiumMortiumSword(ToolMaterials.MORTIUM).setUnlocalizedName("VividiumSword");//.setTextureName(StringLibrary.MODID + ":vividium_sword");
+    	vividiumHoe = new VividiumMortiumHoe(ToolMaterials.MORTIUM).setUnlocalizedName("VividiumHoe");//.setTextureName(StringLibrary.MODID + ":vividium_hoe");
+    	
+    	mortiumPickaxe = new VividiumMortiumPickaxe(ToolMaterials.MORTIUM).setUnlocalizedName("MortiumPickaxe");//.setTextureName(StringLibrary.MODID + ":mortium_pickaxe");
+    	mortiumAxe = new VivdiumMortiumAxe(ToolMaterials.MORTIUM).setUnlocalizedName("MortiumAxe");//.setTextureName(StringLibrary.MODID + ":mortium_axe");
+    	mortiumSpade = new VividiumMortiumSpade(ToolMaterials.MORTIUM).setUnlocalizedName("MortiumSpade");//.setTextureName(StringLibrary.MODID + ":mortium_shovel");
+    	mortiumSword = new VividiumMortiumSword(ToolMaterials.MORTIUM).setUnlocalizedName("MortiumSword");//.setTextureName(StringLibrary.MODID + ":mortium_sword");
+    	mortiumHoe = new VividiumMortiumHoe(ToolMaterials.MORTIUM).setUnlocalizedName("MortiumHoe");//.setTextureName(StringLibrary.MODID + ":mortium_hoe");
     }
  
-    public static void registerItem() {
+   /* public static void registerItem() {
 
         GameRegistry.registerItem(mysticIngot, mysticIngot.getUnlocalizedName());
         GameRegistry.registerItem(mysticApple, mysticApple.getUnlocalizedName());
@@ -359,5 +380,18 @@ public class ItemManager {
         GameRegistry.registerItem(corruption, corruption.getUnlocalizedName());
         GameRegistry.registerItem(backpack, backpack.getUnlocalizedName());
         GameRegistry.registerItem(vividiumIngot, vividiumIngot.getUnlocalizedName());
-    }
+        
+        GameRegistry.registerItem(vividiumPickaxe, vividiumPickaxe.getUnlocalizedName());
+        GameRegistry.registerItem(vividiumAxe, vividiumAxe.getUnlocalizedName());
+        GameRegistry.registerItem(vividiumSpade, vividiumSpade.getUnlocalizedName());
+        GameRegistry.registerItem(vividiumSword, vividiumSword.getUnlocalizedName());
+        GameRegistry.registerItem(vividiumHoe, vividiumHoe.getUnlocalizedName());
+        
+        GameRegistry.registerItem(mortiumPickaxe, mortiumPickaxe.getUnlocalizedName());
+        GameRegistry.registerItem(mortiumAxe, mortiumAxe.getUnlocalizedName());
+        GameRegistry.registerItem(mortiumSpade, mortiumSpade.getUnlocalizedName());
+        GameRegistry.registerItem(mortiumSword, mortiumSword.getUnlocalizedName());
+        GameRegistry.registerItem(mortiumHoe, mortiumHoe.getUnlocalizedName());
+        
+    }*/
 }

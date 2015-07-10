@@ -12,7 +12,7 @@ public class TerriumHoe extends ItemHoe {
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("TerriumHoe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":terrium_hoe");
+		//this.setTextureName(StringLibrary.MODID + ":terrium_hoe");
 	}
 
 }

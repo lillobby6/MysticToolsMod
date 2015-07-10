@@ -3,11 +3,10 @@ package com.camp.recipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.camp.block.BlockManager;
 import com.camp.item.ItemManager;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeManager {
 	public static void mainRegistry(){

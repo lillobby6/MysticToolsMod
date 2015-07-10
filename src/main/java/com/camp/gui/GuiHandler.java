@@ -1,25 +1,28 @@
-package com.camp.gui;
+/*package com.camp.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import com.camp.container.ContainerAlloyFurnace;
+import com.camp.container.ContainerIronOverlayDevice;
 import com.camp.container.ContainerLapisFurnace;
 import com.camp.container.ContainerMacerator;
 import com.camp.container.ContainerMysticChest;
 import com.camp.lib.ByteLibrary;
 import com.camp.main.MainRegistry;
 import com.camp.tileEntity.TileEntityAlloyFurnace;
+import com.camp.tileEntity.TileEntityIronOverlayDevice;
 import com.camp.tileEntity.TileEntityLapisFurnace;
 import com.camp.tileEntity.TileEntityMacerator;
 import com.camp.tileEntity.TileEntityMysticChest;
 
-import cpw.mods.fml.common.network.IGuiHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
-
 public class GuiHandler implements IGuiHandler{
-
+	
+	
 	
 	public GuiHandler()
 	{
@@ -29,6 +32,8 @@ public class GuiHandler implements IGuiHandler{
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z)
 	{
+		
+		
 		TileEntity entity = world.getTileEntity(x, y, z);
 		if(entity != null)
 		{
@@ -56,6 +61,11 @@ public class GuiHandler implements IGuiHandler{
 				if(entity instanceof TileEntityAlloyFurnace)
 				{
 					return new ContainerAlloyFurnace(player.inventory, (TileEntityAlloyFurnace) entity);
+				}
+			case ByteLibrary.GUI_IRON_OVERLAY_DEVICE:
+				if(entity instanceof TileEntityIronOverlayDevice)
+				{
+					return new ContainerIronOverlayDevice(player.inventory, (TileEntityIronOverlayDevice) entity);
 				}
 			}
 		}
@@ -91,6 +101,11 @@ public class GuiHandler implements IGuiHandler{
 				{
 					return new GuiAlloyFurnace(player.inventory, (TileEntityAlloyFurnace) entity);
 				}
+			case ByteLibrary.GUI_IRON_OVERLAY_DEVICE:
+				if(entity instanceof TileEntityIronOverlayDevice)
+				{
+					return new GuiIronOverlayDevice(player.inventory, (TileEntityIronOverlayDevice) entity);
+				}
 			}
 		}
 		
@@ -99,3 +114,4 @@ public class GuiHandler implements IGuiHandler{
 	}
 
 }
+*/

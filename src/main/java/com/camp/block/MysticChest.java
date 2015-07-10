@@ -1,13 +1,10 @@
-package com.camp.block;
-
-import static net.minecraftforge.common.util.ForgeDirection.DOWN;
+/*package com.camp.block;
 
 import java.util.Iterator;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -21,12 +18,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.camp.lib.StringLibrary;
 import com.camp.tileEntity.TileEntityMysticChest;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class MysticChest extends BlockChest{
 
@@ -142,7 +138,7 @@ public class MysticChest extends BlockChest{
         {
             tileentitymysticchest.updateContainingBlockInfo();
         }
-    }*/
+    }*
 	
 	public void breakBlock(World world, int x, int y, int z, Block b, int i)
     {
@@ -226,7 +222,7 @@ public class MysticChest extends BlockChest{
         {
             /*if (p_149951_1_.getBlock(p_149951_2_ - 1, p_149951_3_, p_149951_4_) == this)
             {*/
-                object = new InventoryLargeChest("Mystic Chest", (TileEntityMysticChest)world.getTileEntity(x - 1, y, z), (IInventory)object);
+                //object = new InventoryLargeChest("Mystic Chest", (TileEntityMysticChest)world.getTileEntity(x - 1, y, z), (IInventory)object);
             /*}
 
             if (p_149951_1_.getBlock(p_149951_2_ + 1, p_149951_3_, p_149951_4_) == this)
@@ -242,7 +238,7 @@ public class MysticChest extends BlockChest{
             if (p_149951_1_.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ + 1) == this)
             {
                 object = new InventoryLargeChest("Large Mystic Chest", (IInventory)object, (TileEntityMysticChest)p_149951_1_.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_ + 1));
-            */}
+            *}
 
             return (IInventory)object;
         }
@@ -300,8 +296,8 @@ public class MysticChest extends BlockChest{
         }
 
         return l > 1 ? false : (this.func_149952_n(p_149742_1_, p_149742_2_ - 1, p_149742_3_, p_149742_4_) ? false : (this.func_149952_n(p_149742_1_, p_149742_2_ + 1, p_149742_3_, p_149742_4_) ? false : (this.func_149952_n(p_149742_1_, p_149742_2_, p_149742_3_, p_149742_4_ - 1) ? false : !this.func_149952_n(p_149742_1_, p_149742_2_, p_149742_3_, p_149742_4_ + 1))));
-    */
+    *
     	return true;
     	}
 
-}
+}*/

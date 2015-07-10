@@ -11,7 +11,7 @@ public class SkyIronPickaxe extends ItemPickaxe{
 		super(material);
 		this.setUnlocalizedName("SkyIronPickaxe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":sky_iron_pickaxe");
+		//this.setTextureName(StringLibrary.MODID + ":sky_iron_pickaxe");
 	}
 
 }

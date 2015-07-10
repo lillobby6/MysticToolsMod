@@ -4,7 +4,6 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
@@ -16,9 +15,9 @@ public class DoubleCompressedNetherrack extends Block{
 	protected DoubleCompressedNetherrack(Material p_i45394_1_) {
 		super(p_i45394_1_);
 		// TODO Auto-generated constructor stub
-		this.setBlockName("DoubleCompressedNetherrack");
+		this.setUnlocalizedName("DoubleCompressedNetherrack");
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":double_compressed_netherrack");
+		//this.setBlockTextureName(StringLibrary.MODID + ":double_compressed_netherrack");
 		this.setHardness(2f);
 		this.setResistance(5f);
 	}

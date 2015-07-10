@@ -13,7 +13,7 @@ public class MysticSword extends ItemSword{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("MysticSword");
 		this.setCreativeTab(CreativeTabsManager.tabMysticCombat);
-		this.setTextureName(StringLibrary.MODID + ":mystic_sword");
+		//this.setTextureName(StringLibrary.MODID + ":mystic_sword");
 	}
 
 }

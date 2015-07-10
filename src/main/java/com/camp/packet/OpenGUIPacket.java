@@ -3,10 +3,9 @@ package com.camp.packet;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
 
 import com.camp.main.MainRegistry;
-
-import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 
 public class OpenGUIPacket extends AbstractPacket{
 

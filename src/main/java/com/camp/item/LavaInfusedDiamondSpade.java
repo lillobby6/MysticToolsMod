@@ -13,7 +13,7 @@ public class LavaInfusedDiamondSpade extends ItemSpade{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("LavaInfusedDiamondSpade");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_shovel");
+		//this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_shovel");
 	}
 
 }

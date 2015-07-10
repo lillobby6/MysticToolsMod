@@ -13,7 +13,7 @@ public class MysticAxe extends ItemAxe{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("MysticAxe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":mystic_axe");
+		//this.setTextureName(StringLibrary.MODID + ":mystic_axe");
 	}
 
 }

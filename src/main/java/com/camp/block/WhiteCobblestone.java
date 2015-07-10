@@ -13,9 +13,9 @@ public class WhiteCobblestone extends Block{
 
 	protected WhiteCobblestone(Material p_i45394_1_) {
 		super(p_i45394_1_);
-		this.setBlockName("WhiteCobblestone");
+		this.setUnlocalizedName("WhiteCobblestone");
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":white_cobblestone");
+		//this.setBlockTextureName(StringLibrary.MODID + ":white_cobblestone");
 		/**Also XMas edition :white_cobblestone_xmas**/
 		this.setResistance(30.0f);
 		this.setHardness(1.5f);

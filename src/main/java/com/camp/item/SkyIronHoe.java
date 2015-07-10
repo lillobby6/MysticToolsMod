@@ -12,7 +12,7 @@ public class SkyIronHoe extends ItemHoe{
 		super(p_i45343_1_);
 		this.setUnlocalizedName("SkyIronHoe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":sky_iron_hoe");
+		//this.setTextureName(StringLibrary.MODID + ":sky_iron_hoe");
 	}
 
 }

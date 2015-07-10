@@ -3,6 +3,7 @@ package com.camp.inventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IChatComponent;
 
 public class InventoryMysticChest implements IInventory{
 
@@ -54,13 +55,13 @@ public class InventoryMysticChest implements IInventory{
 	}
 
 	@Override
-	public String getInventoryName() {
-        return this.chest.hasCustomInventoryName() ? this.chest.getInventoryName() : this.name;
+	public String getName() {
+        return this.chest.hasCustomName() ? this.chest.getName() : this.name;
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
-        return this.chest.hasCustomInventoryName();
+	public boolean hasCustomName() {
+        return this.chest.hasCustomName();
 	}
 
 	@Override
@@ -79,18 +80,48 @@ public class InventoryMysticChest implements IInventory{
 	}
 
 	@Override
-	public void openInventory() {
-		this.chest.openInventory();
+	public void openInventory(EntityPlayer player) {
+		this.chest.openInventory(player);
 	}
 
 	@Override
-	public void closeInventory() {
-		this.chest.closeInventory();
+	public void closeInventory(EntityPlayer player) {
+		this.chest.closeInventory(player);
 	}
 
 	@Override
 	public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
 		return true;
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getField(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -9,6 +9,6 @@ public class MysticStick extends Item {
 		public MysticStick(){
 			this.setUnlocalizedName("MysticStick");
 			this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-			this.setTextureName(StringLibrary.MODID + ":mystic_stick");
+			//this.setTextureName(StringLibrary.MODID + ":mystic_stick");
 		}
 }

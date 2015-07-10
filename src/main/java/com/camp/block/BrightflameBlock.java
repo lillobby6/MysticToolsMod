@@ -8,14 +8,21 @@ import com.camp.lib.StringLibrary;
 
 public class BrightflameBlock extends Block {
 
+	public static final String name = "BrightflameBlock";
+	
 	protected BrightflameBlock(Material p_i45394_1_) {
 		super(p_i45394_1_);
-		this.setBlockName("BrightflameBlock");
+		this.setUnlocalizedName("BrightflameBlock");
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":brightflame_block");
+		//this.setBlockTextureName(StringLibrary.MODID + ":brightflame_block");
 		this.setHardness(4f);
 		this.setResistance(30f);
 		this.setLightLevel(0.3f);
+	}
+	
+	public String getName()
+	{
+		return name;
 	}
 
 }

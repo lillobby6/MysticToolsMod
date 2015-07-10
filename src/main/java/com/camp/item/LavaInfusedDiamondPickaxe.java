@@ -13,7 +13,7 @@ public class LavaInfusedDiamondPickaxe extends ItemPickaxe{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("LavaInfusedDiamondPickaxe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_pickaxe");
+		//this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_pickaxe");
 	}
 
 }

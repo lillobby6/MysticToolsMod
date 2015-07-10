@@ -10,6 +10,6 @@ public class VividiumIngot extends Item {
 	{
 		this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
 		this.setUnlocalizedName("VividiumIngot");
-		this.setTextureName(StringLibrary.MODID + ":vividium_ingot");
+		//this.setTextureName(StringLibrary.MODID + ":vividium_ingot");
 	}
 }

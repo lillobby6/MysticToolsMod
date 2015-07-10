@@ -9,6 +9,6 @@ public class ToslotriumIngot extends Item{
 		public ToslotriumIngot(){
 			this.setUnlocalizedName("ToslotriumIngot");
 			this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-			this.setTextureName(StringLibrary.MODID + ":toslotrium_ingot");
+			//this.setTextureName(StringLibrary.MODID + ":toslotrium_ingot");
 		}
 }

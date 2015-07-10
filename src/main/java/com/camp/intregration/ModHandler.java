@@ -2,7 +2,7 @@ package com.camp.intregration;
 
 import java.util.HashMap;
 
-import cpw.mods.fml.common.Loader;
+import net.minecraftforge.fml.common.Loader;
 
 public class ModHandler {
 	private HashMap<String, Boolean> _available = new HashMap();

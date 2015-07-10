@@ -13,7 +13,7 @@ public class LavaInfusedDiamondAxe extends ItemAxe{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("LavaInfusedDiamondAxe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_axe");
+		//this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_axe");
 	}
 
 }

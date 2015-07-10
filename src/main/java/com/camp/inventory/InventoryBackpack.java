@@ -5,6 +5,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.IChatComponent;
 
 public class InventoryBackpack implements IInventory{
 
@@ -62,7 +63,7 @@ public class InventoryBackpack implements IInventory{
 		
 	}
 
-	@Override
+	/*@Override
 	public String getInventoryName() {
 		// TODO Auto-generated method stub
 		return null;
@@ -72,7 +73,7 @@ public class InventoryBackpack implements IInventory{
 	public boolean hasCustomInventoryName() {
 		// TODO Auto-generated method stub
 		return false;
-	}
+	}*/
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -92,7 +93,7 @@ public class InventoryBackpack implements IInventory{
 		return true;
 	}
 
-	@Override
+	/*@Override
 	public void openInventory() {
 		// TODO Auto-generated method stub
 		
@@ -103,11 +104,65 @@ public class InventoryBackpack implements IInventory{
 		// TODO Auto-generated method stub
 		
 	}
-
+*/
 	@Override
 	public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getField(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

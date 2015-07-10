@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 
 import com.camp.creativetabs.CreativeTabsManager;
@@ -16,9 +17,9 @@ public class WhiteStone extends Block {
 	protected WhiteStone(Material material) {
 		super(material);
 
-		this.setBlockName("WhiteStone");
+		this.setUnlocalizedName("WhiteStone");
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":white_stone");
+		//this.setBlockTextureName(StringLibrary.MODID + ":white_stone");
 		this.setResistance(30.0f);
 		this.setHardness(1.0f);
 		this.setHarvestLevel("pickaxe", 0);
@@ -30,8 +31,8 @@ public class WhiteStone extends Block {
 	}
 
 	@Override
-	public Item getItemDropped(int int1, Random rand,
-			int int2) {
-		return Item.getItemFromBlock(BlockManager.whiteCobblestone);
-	}
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(BlockManager.whiteCobblestone);
+    }
 }

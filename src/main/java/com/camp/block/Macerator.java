@@ -1,4 +1,4 @@
-package com.camp.block;
+/*package com.camp.block;
 
 import java.util.List;
 import java.util.Random;
@@ -6,7 +6,6 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,19 +15,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.camp.creativetabs.CreativeTabsManager;
 import com.camp.lib.ByteLibrary;
 import com.camp.lib.StringLibrary;
 import com.camp.main.MainRegistry;
 import com.camp.tileEntity.TileEntityMacerator;
-
-import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class Macerator extends BlockContainer{
 
@@ -75,7 +71,7 @@ public class Macerator extends BlockContainer{
 			super.onBlockAdded(world, x, y, z);
 			this.setDefaultDirection(world, x, y, z);
 		}
-		/**Sets the default direction.*/
+		/**Sets the default direction.*
 		private void setDefaultDirection(World world, int x, int y, int z){
 			if(!world.isRemote){
 				Block block1 = world.getBlock(x, y, z - 1);
@@ -169,7 +165,7 @@ public class Macerator extends BlockContainer{
 					
 					
 				}
-			}*/
+			}*
 			@Override
 			public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack itemstack){
 				int l = MathHelper.floor_double((double) (entityLivingBase.rotationYaw * 4.0F / 360.0F)+ 0.5D) & 3;
@@ -291,4 +287,4 @@ public class Macerator extends BlockContainer{
 				return Item.getItemFromBlock(BlockManager.maceratorIdle);
 			}
 		
-}
+}*/

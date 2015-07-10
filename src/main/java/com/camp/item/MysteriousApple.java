@@ -18,7 +18,7 @@ public class MysteriousApple extends ItemFood{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("MysteriousApple");
 		this.setCreativeTab(CreativeTabsManager.tabMysticFoods);
-		this.setTextureName(StringLibrary.MODID + ":apple_mysterious");
+		//this.setTextureName(StringLibrary.MODID + ":apple_mysterious");
 		this.setAlwaysEdible();
 	}
 	public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
@@ -30,7 +30,7 @@ public class MysteriousApple extends ItemFood{
 			player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 6000, 3));
 			player.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 6000, 3));
 			player.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 1000, 1));
-			player.addPotionEffect(new PotionEffect(Potion.field_76444_x.id, 6000, 1));
+			player.addPotionEffect(new PotionEffect(Potion.absorption.id, 6000, 1));
 		}
 	}
 }

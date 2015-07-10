@@ -11,7 +11,7 @@ public class MagicHoe extends ItemHoe{
 		super(p_i45343_1_);
 		this.setUnlocalizedName("MagicHoe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":magic_hoe");
+		//this.setTextureName(StringLibrary.MODID + ":magic_hoe");
 	}
 
 }

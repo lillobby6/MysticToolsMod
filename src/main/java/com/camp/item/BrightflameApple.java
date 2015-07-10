@@ -6,11 +6,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.camp.creativetabs.CreativeTabsManager;
 import com.camp.lib.StringLibrary;
 //need to chose INT, FLOAT, BOOLEAN
 public class BrightflameApple extends ItemFood{
+	
+	public final String name = "BrightflameApple";
 
 	public BrightflameApple(int p_i45339_1_, float p_i45339_2_,
 			boolean p_i45339_3_) {
@@ -19,7 +22,8 @@ public class BrightflameApple extends ItemFood{
 		this.setAlwaysEdible();
 		this.setUnlocalizedName("BrightflameApple");
 		this.setCreativeTab(CreativeTabsManager.tabMysticFoods);
-		this.setTextureName(StringLibrary.MODID + ":apple_brightflame");
+		GameRegistry.registerItem(this, name);
+		//this.setTextureName(StringLibrary.MODID + ":apple_brightflame");
 	}
 	@Override
 	public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
@@ -33,5 +37,9 @@ public class BrightflameApple extends ItemFood{
 			player.addExperienceLevel(30);
 		}
 }
+	public String getName()
+	{
+		return name;
+	}
 	
 }

@@ -10,7 +10,7 @@ public class MagicNugget extends Item{
 	public MagicNugget(){
 		this.setUnlocalizedName("MagicNugget");
 		this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-		this.setTextureName(StringLibrary.MODID + ":magic_nugget");
+		//this.setTextureName(StringLibrary.MODID + ":magic_nugget");
 		this.setMaxStackSize(32);
 	}
 }

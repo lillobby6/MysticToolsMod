@@ -10,6 +10,6 @@ public class MortiumIngot extends Item{
 	{
 		this.setUnlocalizedName("MortiumIngot");
 		this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-		this.setTextureName(StringLibrary.MODID + ":mortium_ingot");
+		//this.setTextureName(StringLibrary.MODID + ":mortium_ingot");
 	}
 }

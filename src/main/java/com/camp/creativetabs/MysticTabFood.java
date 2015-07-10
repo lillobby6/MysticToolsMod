@@ -3,6 +3,7 @@ package com.camp.creativetabs;
 import com.camp.item.ItemManager;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 
 public class MysticTabFood extends CreativeTabs {
@@ -15,7 +16,7 @@ public class MysticTabFood extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() {
 		// TODO Auto-generated method stub
-		return ItemManager.mysticApple;
+		return Item.getItemFromBlock(Blocks.stone);//ItemManager.mysticApple;
 	}
 
 }

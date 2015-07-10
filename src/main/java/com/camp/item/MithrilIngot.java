@@ -9,6 +9,6 @@ public class MithrilIngot extends Item{
 		public MithrilIngot(){
 			this.setUnlocalizedName("MithrilIngot");
 			this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-			this.setTextureName(StringLibrary.MODID + ":mithril_ingot");
+			//this.setTextureName(StringLibrary.MODID + ":mithril_ingot");
 		}
 }

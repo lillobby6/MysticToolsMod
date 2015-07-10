@@ -13,7 +13,7 @@ public class LavaInfusedDiamondSword extends ItemSword{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("LavaInfusedDiamondSword");
 		this.setCreativeTab(CreativeTabsManager.tabMysticCombat);
-		this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_sword");
+		//this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_sword");
 	}
 
 }

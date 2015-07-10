@@ -8,17 +8,14 @@ import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import com.camp.block.MysticChest;
 import com.camp.lib.StringLibrary;
 import com.camp.tileEntity.TileEntityMysticChest;
-
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class MysticChestRenderer extends TileEntitySpecialRenderer
@@ -53,15 +50,15 @@ public class MysticChestRenderer extends TileEntitySpecialRenderer
             Block block = p_147500_1_.getBlockType();
             i = p_147500_1_.getBlockMetadata();
 
-            if (block instanceof MysticChest && i == 0)
+            if (block instanceof Block && i == 0)
             {
                 try
                 {
-                ((MysticChest)block).func_149954_e(p_147500_1_.getWorldObj(), p_147500_1_.xCoord, p_147500_1_.yCoord, p_147500_1_.zCoord);
+               // ((MysticChest)block).func_149954_e(p_147500_1_.getWorld(), p_147500_1_.xCoord, p_147500_1_.yCoord, p_147500_1_.zCoord);
                 }
                 catch (ClassCastException e)
                 {
-                    FMLLog.severe("Attempted to render a chest at %d,  %d, %d that was not a chest", p_147500_1_.xCoord, p_147500_1_.yCoord, p_147500_1_.zCoord);
+                 //   FMLLog.severe("Attempted to render a chest at %d,  %d, %d that was not a chest", p_147500_1_.xCoord, p_147500_1_.yCoord, p_147500_1_.zCoord);
                 }
                 i = p_147500_1_.getBlockMetadata();
             }
@@ -167,4 +164,11 @@ public class MysticChestRenderer extends TileEntitySpecialRenderer
     {
         this.renderTileEntityAt((TileEntityMysticChest)p_147500_1_, p_147500_2_, p_147500_4_, p_147500_6_, p_147500_8_);
     }
+
+	@Override
+	public void renderTileEntityAt(TileEntity p_180535_1_, double posX,
+			double posZ, double p_180535_6_, float p_180535_8_, int p_180535_9_) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -1,4 +1,4 @@
-/*package com.camp.biome;
+package com.camp.biome;
 
 import net.minecraft.world.WorldType;
 import net.minecraft.world.gen.layer.GenLayer;
@@ -20,4 +20,4 @@ public class WorldTypeMystic extends WorldType{
         ret = new GenLayerBiomeEdge(1000L, ret);
         return ret;
     }
-}*/
+}

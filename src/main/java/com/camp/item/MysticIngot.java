@@ -10,7 +10,7 @@ public class MysticIngot extends Item{
 	public MysticIngot(){
 		this.setUnlocalizedName("MysticIngot");
 	    this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-	    this.setTextureName(StringLibrary.MODID + ":mystic_ingot");
+	    //this.setTextureName(StringLibrary.MODID + ":mystic_ingot");
 	    this.setMaxStackSize(48);
 	}
 }

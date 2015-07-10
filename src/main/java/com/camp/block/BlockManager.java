@@ -2,15 +2,14 @@ package com.camp.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.camp.creativetabs.CreativeTabsManager;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockManager {
 	public static void mainRegistry() {
 		initializeBlock();
-		registerBlock();
+		//registerBlock();
 	}
 
 	public static Block compressedNetherrack;
@@ -45,6 +44,9 @@ public class BlockManager {
 	  public static Block alloyFurnaceActive;
 	  
 	  public static Block vividiumOre;
+	  
+	  public static Block ironOverlayDeviceIdle;
+	  public static Block ironOverlayDeviceActive;
 
 	public static void initializeBlock() {
 	/**	compressedNetherrack = new CompressedNetherrack(Material.rock);
@@ -97,34 +99,41 @@ public class BlockManager {
 		
 		mortiumOre = new MortiumOre(Material.rock);
 
-		lapisFurnaceIdle = new LapisFurnace(false)
-				.setBlockName("LapisFurnaceIdle").setHardness(3.5f)
+		/*lapisFurnaceIdle = new LapisFurnace(false)
+				.setUnlocalizedName("LapisFurnaceIdle").setHardness(3.5f)
 				.setCreativeTab(CreativeTabsManager.tabMysticMachines);
 		lapisFurnaceActive = new LapisFurnace(true)
-				.setBlockName("LapisFurnaceActive").setHardness(3.5f)
+				.setUnlocalizedName("LapisFurnaceActive").setHardness(3.5f)
 				.setLightLevel(0.9F);
 		mysticPortal = new MysticPortal()
-		.setBlockName("Mystic Portal");
-		mysticChest = new MysticChest(0).setBlockName("MysticChest").setCreativeTab(CreativeTabsManager.tabStorage);
+		.setUnlocalizedName("Mystic Portal");
+		mysticChest = new MysticChest(0).setUnlocalizedName("MysticChest").setCreativeTab(CreativeTabsManager.tabStorage);
 		
-		maceratorIdle = new Macerator(false)
-		.setBlockName("MaceratorIdle")
+		/*maceratorIdle = new Macerator(false)
+		.setUnlocalizedName("MaceratorIdle")
 		.setCreativeTab(CreativeTabsManager.tabMysticMachines);
 		maceratorActive = new Macerator(true)
-		.setBlockName("MaceratorActive");
+		.setUnlocalizedName("MaceratorActive");
 		
-		alloyFurnaceIdle = new AlloyFurnace(false)
-		.setBlockName("AlloyFurnaceIdle")
+		/*alloyFurnaceIdle = new AlloyFurnace(false)
+		.setUnlocalizedName("AlloyFurnaceIdle")
 		.setCreativeTab(CreativeTabsManager.tabMysticMachines);
-		alloyFurnaceActive = new AlloyFurnace(true)
-		.setBlockName("AlloyFurnaceActive");
+		alloyFurnaceActive = new setUnlocalizedName(true)
+		.setUnlocalizedName("AlloyFurnaceActive");*/
 		
 		vividiumOre = new VididiumOre(Material.rock)
-		.setBlockName("VividiumOre");
+		.setUnlocalizedName("VividiumOre");
+		
+		/*ironOverlayDeviceIdle = new IronOverlayDevice(false)
+		.setUnlocalizedName("IronOverlayDeviceIdle")
+		.setCreativeTab(CreativeTabsManager.tabMysticMachines);
+		
+		ironOverlayDeviceActive = new IronOverlayDevice(true)
+		.setUnlocalizedName("IronOverlayDeviceActive");*/
 
 	}
 
-	public static void registerBlock() {
+	/*public static void registerBlock() {
 		GameRegistry.registerBlock(compressedNetherrack,
 				compressedNetherrack.getUnlocalizedName());
 		GameRegistry.registerBlock(doubleCompressedNetherrack,
@@ -172,5 +181,8 @@ public class BlockManager {
 		GameRegistry.registerBlock(alloyFurnaceActive, alloyFurnaceActive.getUnlocalizedName());
 		
 		GameRegistry.registerBlock(vividiumOre, vividiumOre.getUnlocalizedName());
-	}
+		
+		GameRegistry.registerBlock(ironOverlayDeviceIdle, ironOverlayDeviceIdle.getUnlocalizedName());
+		GameRegistry.registerBlock(ironOverlayDeviceActive, ironOverlayDeviceActive.getUnlocalizedName());
+	}*/
 }

@@ -10,9 +10,9 @@ public class TerriumBlock extends Block{
 
 	protected TerriumBlock(Material p_i45394_1_) {
 		super(p_i45394_1_);
-		this.setBlockName("TerriumBlock");
+		this.setUnlocalizedName("TerriumBlock");
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":terrium_block");
+		//this.setBlockTextureName(StringLibrary.MODID + ":terrium_block");
 		this.setHardness(5f);
 		this.setResistance(50f);
 	}

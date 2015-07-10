@@ -12,11 +12,11 @@ public class TerriumOre extends Block{
 		super(p_i45394_1_);
 		// TODO Auto-generated constructor stub
 	
-		this.setBlockName("TerriumOre");
+		this.setUnlocalizedName("TerriumOre");
 		this.setHardness(0.5f);
 		this.setResistance(5f);
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":terrium_ore");
+		//this.setBlockTextureName(StringLibrary.MODID + ":terrium_ore");
 		this.setHarvestLevel("pickaxe", 4);
 		this.setStepSound(Block.soundTypeStone);
 }

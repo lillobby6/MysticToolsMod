@@ -11,9 +11,9 @@ public class WeaklyReinforcedCobblestone extends Block {
 	protected WeaklyReinforcedCobblestone(Material p_i45394_1_) {
 		super(p_i45394_1_);
 		// TODO Auto-generated constructor stub
-		this.setBlockName("WeaklyReinforcedCobblestone");
+		this.setUnlocalizedName("WeaklyReinforcedCobblestone");
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":weakly_reinfroced_cobblestone");
+		//this.setBlockTextureName(StringLibrary.MODID + ":weakly_reinfroced_cobblestone");
 	}
 
 }

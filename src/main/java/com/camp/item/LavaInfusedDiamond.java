@@ -10,6 +10,6 @@ public class LavaInfusedDiamond extends Item{
 	public LavaInfusedDiamond(){
 		this.setUnlocalizedName("LavaInfusedDiamond");
 		this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-		this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond");
+		//this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond");
 	}
 }

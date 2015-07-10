@@ -10,6 +10,6 @@ public class SkyIronIngot extends Item {
 		{
 			this.setUnlocalizedName("SkyIronIngot");
 			this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-			this.setTextureName(StringLibrary.MODID + ":sky_iron_ingot");
+			//this.setTextureName(StringLibrary.MODID + ":sky_iron_ingot");
 		}
 }

@@ -11,7 +11,7 @@ public class SkyIronSpade extends ItemSpade{
 		super(material);
 		this.setUnlocalizedName("SkyIronSpade");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":sky_iron_shovel");
+		//this.setTextureName(StringLibrary.MODID + ":sky_iron_shovel");
 	}
 
 }

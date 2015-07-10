@@ -1,4 +1,4 @@
-package com.camp.dimension;
+/*package com.camp.dimension;
 
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.WorldChunkManagerHell;
@@ -11,7 +11,7 @@ public class WorldProviderMystic extends WorldProvider{
 	public void registerWorldChunkManager()
 	{
 		this.worldChunkMgr = new WorldChunkManagerHell(BiomeRegistry.biomeMystic,1.2F);
-		this.dimensionId = DimensionRegistry.dimensionId;
+		//TODOthis.dimensionId = DimensionRegistry.dimensionId;
 	}
 	
 	public IChunkProvider createChunkGeneration()
@@ -24,4 +24,11 @@ public class WorldProviderMystic extends WorldProvider{
 		return "Mystic";
 	}
 
+	@Override
+	public String getInternalNameSuffix() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
+*/

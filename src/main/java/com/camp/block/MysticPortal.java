@@ -243,7 +243,7 @@ public class MysticPortal extends BlockPortal {
         }
     }
 	
-}*/
+}*
 package com.camp.block;
 
 import java.util.Random;
@@ -256,12 +256,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.Direction;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import com.sun.xml.internal.ws.handler.HandlerProcessor.Direction;
 
 public class MysticPortal extends BlockBreakable
 {
@@ -276,7 +276,7 @@ public class MysticPortal extends BlockBreakable
 
     /**
      * Ticks the block if it's been scheduled
-     */
+     *
     public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
     {
         super.updateTick(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, p_149674_5_);
@@ -305,7 +305,7 @@ public class MysticPortal extends BlockBreakable
     /**
      * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
      * cleared to be reused)
-     */
+     *
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
     {
         return null;
@@ -313,7 +313,7 @@ public class MysticPortal extends BlockBreakable
 
     /**
      * Updates the blocks bounds based on its current state. Args: world, x, y, z
-     */
+     *
     public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
     {
         int l = func_149999_b(p_149719_1_.getBlockMetadata(p_149719_2_, p_149719_3_, p_149719_4_));
@@ -353,7 +353,7 @@ public class MysticPortal extends BlockBreakable
 
     /**
      * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
-     */
+     *
     public boolean renderAsNormalBlock()
     {
         return false;
@@ -378,12 +378,12 @@ public class MysticPortal extends BlockBreakable
         {
             return false;
         }
-    }*/
+    }*
 
     /**
      * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
      * their own) Args: x, y, z, neighbor Block
-     */
+     *
     public void onNeightborBlockChange(World world, int x, int y, int z, Block block)
 	{
 		byte b0 = 0;
@@ -437,7 +437,7 @@ public class MysticPortal extends BlockBreakable
     /**
      * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given
      * coordinates.  Args: blockAccess, x, y, z, side
-     */
+     *
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
     {
@@ -474,7 +474,7 @@ public class MysticPortal extends BlockBreakable
 
     /**
      * Returns the quantity of items to drop on block destruction.
-     */
+     *
     public int quantityDropped(Random p_149745_1_)
     {
         return 0;
@@ -482,7 +482,7 @@ public class MysticPortal extends BlockBreakable
 
     /**
      * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
-     */
+     *
     public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity p_149670_5_)
     {
         if (p_149670_5_.ridingEntity == null && p_149670_5_.riddenByEntity == null)
@@ -493,7 +493,7 @@ public class MysticPortal extends BlockBreakable
 
     /**
      * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
-     */
+     *
     @SideOnly(Side.CLIENT)
     public int getRenderBlockPass()
     {
@@ -502,7 +502,7 @@ public class MysticPortal extends BlockBreakable
 
     /**
      * A randomly called display update to be able to add particles or other items for display
-     */
+     *
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
     {
@@ -546,7 +546,7 @@ public class MysticPortal extends BlockBreakable
 
     /**
      * Gets an item for the block being called on. Args: world, x, y, z
-     */
+     *
     @SideOnly(Side.CLIENT)
     public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_)
     {
@@ -725,5 +725,5 @@ public class MysticPortal extends BlockBreakable
                 }
             }
         }
-}
+}*/
 

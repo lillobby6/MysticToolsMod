@@ -7,7 +7,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.MathHelper;
-import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
 public class SlotAlloyFurnace extends Slot
 {
@@ -34,7 +34,7 @@ public class SlotAlloyFurnace extends Slot
      * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
      * stack.
      */
-    public ItemStack decrStackSize(int par1)
+   /*////////////////////////////////// public ItemStack decrStackSize(int par1)
     {
         if (this.getHasStack())
         {
@@ -62,7 +62,7 @@ public class SlotAlloyFurnace extends Slot
 
     /**
      * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood.
-     */
+     *
     protected void onCrafting(ItemStack p_75208_1_)
     {
         p_75208_1_.onCrafting(this.thePlayer.worldObj, this.thePlayer, this.i);
@@ -110,5 +110,5 @@ public class SlotAlloyFurnace extends Slot
         {
             this.thePlayer.addStat(AchievementList.cookFish, 1);
         }*/
-    }
+    //}
 }

@@ -1,4 +1,4 @@
-package com.camp.dimension;
+/*package com.camp.dimension;
 
 import com.camp.lib.IntLibrary;
 
@@ -15,7 +15,8 @@ public class DimensionRegistry {
 	
 	public static void registerDimension()
 	{
-		//DimensionManager.registerProviderType(dimensionId, WorldProviderMystic.class, false);
+		DimensionManager.registerProviderType(dimensionId, WorldProviderMystic.class, false);
 		DimensionManager.registerDimension(dimensionId, dimensionId);
 	}
 }
+*/

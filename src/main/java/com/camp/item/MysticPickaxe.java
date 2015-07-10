@@ -13,7 +13,7 @@ public class MysticPickaxe extends ItemPickaxe{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("MysticPickaxe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":mystic_pickaxe");
+		//this.setTextureName(StringLibrary.MODID + ":mystic_pickaxe");
 	}
 
 }

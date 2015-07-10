@@ -9,6 +9,6 @@ public class MixedIngot extends Item{
 		public MixedIngot(){
 			this.setUnlocalizedName("MixedIngot");
 			this.setCreativeTab(CreativeTabsManager.tabMysticMaterials);
-			this.setTextureName(StringLibrary.MODID + ":mixed_ingot");
+			//this.setTextureName(StringLibrary.MODID + ":mixed_ingot");
 		}
 }

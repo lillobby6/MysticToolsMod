@@ -7,12 +7,11 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.camp.inventory.SlotAlloyFurnace;
 import com.camp.tileEntity.TileEntityAlloyFurnace;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerAlloyFurnace extends Container{
 
@@ -128,13 +127,13 @@ public class ContainerAlloyFurnace extends Container{
 			}
 			else if(clickedSlotNumber != 1 && clickedSlotNumber != 0)
 			{
-				if(FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
-				{
+				//if(FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
+				//{
 					if(!this.mergeItemStack(itemstack1, 0, 1, false))
 					{
 						return null;
 					}
-				}
+				//}
 				else if(TileEntityAlloyFurnace.isItemFuel(itemstack1))
 				{
 					if(!this.mergeItemStack(itemstack1, 1, 2, false))

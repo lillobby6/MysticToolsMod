@@ -10,9 +10,9 @@ public class MortiumOre extends Block {
 
 	protected MortiumOre(Material p_i45394_1_) {
 		super(p_i45394_1_);
-		this.setBlockName("MortiumOre");
+		this.setUnlocalizedName("MortiumOre");
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":mortium_ore");
+		//this.setBlockTextureName(StringLibrary.MODID + ":mortium_ore");
 		this.setHardness(1.5f);
 		this.setResistance(50);
 	}

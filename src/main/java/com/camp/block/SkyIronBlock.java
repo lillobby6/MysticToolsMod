@@ -10,9 +10,9 @@ public class SkyIronBlock extends Block {
 
 	protected SkyIronBlock(Material p_i45394_1_) {
 		super(p_i45394_1_);
-		this.setBlockName("SkyIronBlock");
+		this.setUnlocalizedName("SkyIronBlock");
 		this.setCreativeTab(CreativeTabsManager.tabMysticBlocks);
-		this.setBlockTextureName(StringLibrary.MODID + ":sky_iron_block");
+		//this.setBlockTextureName(StringLibrary.MODID + ":sky_iron_block");
 		this.setHardness(5.0f);
 		this.setResistance(10.0f);
 	}

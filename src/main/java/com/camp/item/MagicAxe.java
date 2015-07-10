@@ -11,7 +11,7 @@ public class MagicAxe extends ItemAxe{
 		super(p_i45327_1_);
 		this.setUnlocalizedName("MagicAxe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":magic_axe");
+		//this.setTextureName(StringLibrary.MODID + ":magic_axe");
 	}
 
 }

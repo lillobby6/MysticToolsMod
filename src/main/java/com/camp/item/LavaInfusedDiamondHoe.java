@@ -13,7 +13,7 @@ public class LavaInfusedDiamondHoe extends ItemHoe{
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("LavaInfusedDiamondHoe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_hoe");
+		//this.setTextureName(StringLibrary.MODID + ":lava_infused_diamond_hoe");
 	}
 
 }

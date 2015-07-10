@@ -11,7 +11,7 @@ public class MagicSword extends ItemSword{
 		super(p_i45356_1_);
 		this.setUnlocalizedName("MagicSword");
 		this.setCreativeTab(CreativeTabsManager.tabMysticCombat);
-		this.setTextureName(StringLibrary.MODID + ":magic_sword");
+		//this.setTextureName(StringLibrary.MODID + ":magic_sword");
 	}
 
 }

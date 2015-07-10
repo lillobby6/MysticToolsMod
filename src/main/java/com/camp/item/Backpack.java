@@ -8,16 +8,22 @@ import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.camp.container.ContainerBackpack;
+import com.camp.creativetabs.CreativeTabsManager;
 
 public class Backpack extends ItemArmor {
 
+	public static final String name = "Backpack";
+	
 	public Backpack(ArmorMaterial armorMaterials, int renderIndex, int armorType)
 	{
 		super(armorMaterials, armorType, armorType);
 		this.setMaxStackSize(1);
 		//this.setHasSubtypes(true);
+		this.setCreativeTab(CreativeTabsManager.tabStorage);
+		//GameRegistry.registerItem(this, name);
 	}
 	
 	public void func_77624_a(ItemStack itemStack, EntityPlayer player, List list, boolean p_77624_4_)

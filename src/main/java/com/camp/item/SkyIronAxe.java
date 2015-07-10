@@ -11,7 +11,7 @@ public class SkyIronAxe extends ItemAxe{
 		super(p_i45327_1_);
 		this.setUnlocalizedName("SkyIronAxe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":sky_iron_axe");
+		//this.setTextureName(StringLibrary.MODID + ":sky_iron_axe");
 	}
 
 }

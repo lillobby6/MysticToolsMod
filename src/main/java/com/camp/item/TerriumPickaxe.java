@@ -12,7 +12,7 @@ public class TerriumPickaxe extends ItemPickaxe {
 		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("TerriumPickaxe");
 		this.setCreativeTab(CreativeTabsManager.tabMysticTools);
-		this.setTextureName(StringLibrary.MODID + ":terrium_pickaxe");
+		//this.setTextureName(StringLibrary.MODID + ":terrium_pickaxe");
 	}
 
 }

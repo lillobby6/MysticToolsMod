@@ -1,12 +1,9 @@
 package com.camp.tileEntity;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityChest;
-
-import com.camp.block.MysticChest;
 
 public class TileEntityMysticChest extends TileEntityChest{
 
@@ -23,7 +20,8 @@ public class TileEntityMysticChest extends TileEntityChest{
     
     public String getInventoryName()
     {
-    	return this.hasCustomInventoryName() ? this.customName : "Mystic Chest";
+		return customName;
+    //	return this.hasCustomInventoryName() ? this.customName : "Mystic Chest";
     }
     
     public void readFromNBT(NBTTagCompound nbtTag)
@@ -67,7 +65,7 @@ public class TileEntityMysticChest extends TileEntityChest{
 
         p_145841_1_.setTag("Items", nbttaglist);
 
-        if (this.hasCustomInventoryName())
+        if (this.hasCustomName())
         {
             p_145841_1_.setString("Mystic Chest", this.customName);
         }
@@ -166,12 +164,12 @@ public class TileEntityMysticChest extends TileEntityChest{
     {
         if (this.cachedChestType == -1)
         {
-            if (this.worldObj == null || !(this.getBlockType() instanceof MysticChest))
-            {
-                return 0;
-            }
+            //if (this.worldObj == null || !(this.getBlockType() instanceof Block))
+           // {
+            //    return 0;
+           // }
 
-            this.cachedChestType = ((MysticChest)this.getBlockType()).field_149956_a;
+           // this.cachedChestType = ((Block)this.getBlockType()).chestType;
         }
 
         return this.cachedChestType;
@@ -185,10 +183,11 @@ public class TileEntityMysticChest extends TileEntityChest{
         }
         else
         {
-            Block block = this.worldObj.getBlock(p_145977_1_, p_145977_2_, p_145977_3_);
-			return block instanceof MysticChest
-					&& ((MysticChest)block).field_149956_a == this.func_145980_j();
+            //Block block = ) this.worldObj).getBlock(p_145977_1_, p_145977_2_, p_145977_3_);
+			//return block instanceof MysticChest
+					//&& ((MysticChest)block).chestType == this.func_145980_j();
         }
+		return adjacentChestChecked;
     }
     
 }

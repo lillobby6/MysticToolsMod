@@ -3,6 +3,7 @@ package com.camp.creativetabs;
 import com.camp.item.ItemManager;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 
 public class MysticTabTools extends CreativeTabs {
@@ -15,7 +16,7 @@ public class MysticTabTools extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() {
 		// TODO Auto-generated method stub
-		return ItemManager.mysticPickaxe;
+		return Item.getItemFromBlock(Blocks.stone);//ItemManager.mysticPickaxe;
 	}
 
 }

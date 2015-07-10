@@ -5,15 +5,12 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.camp.tileEntity.TileEntityMacerator;
-import com.camp.tileEntity.TileEntityMacerator;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerMacerator extends Container{
 
@@ -35,7 +32,7 @@ public class ContainerMacerator extends Container{
 		
 		this.addSlotToContainer(new Slot(tileentity, 0, 56, 35));
 		this.addSlotToContainer(new Slot(tileentity, 1, 8, 56));
-		this.addSlotToContainer(new SlotFurnace(inventory.player, tileentity, 2, 116, 35));
+		//this.addSlotToContainer(new SlotFurnace(inventory.player, tileentity, 2, 116, 35));
 		
 		for(int i = 0; i < 3; i++)
 		{
@@ -119,13 +116,13 @@ public class ContainerMacerator extends Container{
 			}
 			else if(clickedSlotNumber != 1 && clickedSlotNumber != 0)
 			{
-				if(FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
-				{
+			//	if(FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
+				//{
 					if(!this.mergeItemStack(itemstack1, 0, 1, false))
 					{
 						return null;
 					}
-				}
+			//	}
 				else if(TileEntityMacerator.hasItemPower(itemstack1))
 				{
 					if(!this.mergeItemStack(itemstack1, 1, 2, false))

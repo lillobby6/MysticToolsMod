@@ -6,7 +6,7 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 public class SpeedBoost extends Enchantment {
 
 	protected SpeedBoost(int id, int rarity) {
-		super(id, rarity, EnumEnchantmentType.armor_feet);
+		super(id, null, rarity, EnumEnchantmentType.ARMOR_FEET);
 		this.setName("SpeedBoost");
 		
 		

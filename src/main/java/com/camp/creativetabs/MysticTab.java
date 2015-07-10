@@ -1,8 +1,7 @@
 package com.camp.creativetabs;
 
-import com.camp.item.ItemManager;
-
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 
 public class MysticTab extends CreativeTabs{
@@ -14,7 +13,7 @@ public class MysticTab extends CreativeTabs{
 	  @Override
 	    public Item getTabIconItem() {
 	        // TODO Auto-generated method stub
-	        return ItemManager.mysticIngot;
+	        return Item.getItemFromBlock(Blocks.stone);//ItemManager.mysticIngot;
 	    }
 
 
