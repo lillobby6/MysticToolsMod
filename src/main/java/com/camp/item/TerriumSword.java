@@ -1,11 +1,13 @@
 package com.camp.item;
 
 import net.minecraft.item.ItemSword;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.camp.creativetabs.CreativeTabsManager;
-import com.camp.lib.StringLibrary;
 
 public class TerriumSword extends ItemSword {
+	
+	public static final String name = "TerriumSword";
 
 	public TerriumSword(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
@@ -13,6 +15,12 @@ public class TerriumSword extends ItemSword {
 		this.setUnlocalizedName("TerriumSword");
 		this.setCreativeTab(CreativeTabsManager.tabMysticCombat);
 		//this.setTextureName(StringLibrary.MODID + ":terrium_sword");
+		GameRegistry.registerItem(this, name);
+	}
+	
+	public String getName()
+	{
+		return name;
 	}
 
 }

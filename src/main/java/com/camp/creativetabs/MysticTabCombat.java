@@ -16,7 +16,7 @@ public class MysticTabCombat extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() {
 		// TODO Auto-generated method stub
-		return Item.getItemFromBlock(Blocks.stone);//ItemManager.mysticSword;
+		return ItemManager.mysticSword;
 	}
 
 }

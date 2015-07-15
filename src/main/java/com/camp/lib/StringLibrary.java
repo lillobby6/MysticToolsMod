@@ -7,7 +7,7 @@ public class StringLibrary {
 	
 	public static final String name = "MysticTools";
 	
-	public static final String version = "v1.1.0.3";
+	public static final String version = "v1.1.0.6";
 	
 	public static final String PACKET_CHANNEL = "MysticTools";
 	

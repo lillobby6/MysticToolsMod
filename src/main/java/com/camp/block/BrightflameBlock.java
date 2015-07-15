@@ -2,6 +2,7 @@ package com.camp.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.camp.creativetabs.CreativeTabsManager;
 import com.camp.lib.StringLibrary;
@@ -18,6 +19,7 @@ public class BrightflameBlock extends Block {
 		this.setHardness(4f);
 		this.setResistance(30f);
 		this.setLightLevel(0.3f);
+		GameRegistry.registerBlock(this, name);
 	}
 	
 	public String getName()

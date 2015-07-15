@@ -6,11 +6,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.camp.creativetabs.CreativeTabsManager;
-import com.camp.lib.StringLibrary;
 
 public class MysteriousApple extends ItemFood{
+	
+	public static final String name = "MysteriousApple";
 
 	public MysteriousApple(int p_i45339_1_, float p_i45339_2_,
 			boolean p_i45339_3_) {
@@ -20,6 +22,7 @@ public class MysteriousApple extends ItemFood{
 		this.setCreativeTab(CreativeTabsManager.tabMysticFoods);
 		//this.setTextureName(StringLibrary.MODID + ":apple_mysterious");
 		this.setAlwaysEdible();
+		GameRegistry.registerItem(this, name);
 	}
 	public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);
@@ -33,4 +36,10 @@ public class MysteriousApple extends ItemFood{
 			player.addPotionEffect(new PotionEffect(Potion.absorption.id, 6000, 1));
 		}
 	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
 }

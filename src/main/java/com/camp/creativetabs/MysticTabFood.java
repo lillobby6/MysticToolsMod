@@ -16,7 +16,7 @@ public class MysticTabFood extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() {
 		// TODO Auto-generated method stub
-		return Item.getItemFromBlock(Blocks.stone);//ItemManager.mysticApple;
+		return ItemManager.mysticApple;
 	}
 
 }

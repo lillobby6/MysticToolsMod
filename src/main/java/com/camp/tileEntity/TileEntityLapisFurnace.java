@@ -1,18 +1,27 @@
 package com.camp.tileEntity;
 
+import com.camp.block.LapisFurnace;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFurnace;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.MathHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -40,18 +49,21 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 	/**How much time left before item cooked.*/
 	public int cookTime;
 	
+	private int totalCookTime;
+	
 	public int getSizeInventory()
 	{
 		return this.slots.length;
 	}
 	
-	public String getInventoryName()
+	@Override
+	public String getName()
 	{
-		return this.hasCustomInventoryName() ?  this.localizedName : "container.lapisFurnace";
+		return this.hasCustomName() ?  this.localizedName : "container.lapisFurnace";
 	}
 	
-
-	public boolean hasCustomInventoryName()
+	@Override
+	public boolean hasCustomName()
 	{
 		return this.localizedName != null && this.localizedName.length() > 0;
 	}
@@ -114,14 +126,22 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 	}
 
 	@Override
-	public void setInventorySlotContents(int i, ItemStack itemstack) {
-		this.slots[i] = itemstack;
+	public void setInventorySlotContents(int index, ItemStack stack) {
+        boolean flag = stack != null && stack.isItemEqual(this.slots[index]) && ItemStack.areItemStackTagsEqual(stack, this.slots[index]);
+        this.slots[index] = stack;
 
-        if (itemstack != null && itemstack.stackSize > this.getInventoryStackLimit())
+        if (stack != null && stack.stackSize > this.getInventoryStackLimit())
         {
-            itemstack.stackSize = this.getInventoryStackLimit();
+            stack.stackSize = this.getInventoryStackLimit();
         }
-		
+
+        if (index == 0 && !flag)
+        {
+            this.totalCookTime = this.getFurnaceBurnTime(stack);
+            this.cookTime = 0;
+            this.markDirty();
+        
+        }
 	}
 	
 	@Override
@@ -152,6 +172,7 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 		
 		this.burnTime = nbt.getShort("BurnTime");
 		this.cookTime = nbt.getShort("CookTime");
+		this.totalCookTime = nbt.getShort("TotalCookTime");
 		this.currentItemBurnTime = getItemBurnTime(this.slots[1]);
 		
 		if(nbt.hasKey("CustomName"))
@@ -168,6 +189,7 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 		
 		nbt.setShort("BurnTime", (short)this.burnTime);
 		nbt.setShort("CookTime", (short)this.cookTime);
+		nbt.setShort("CookTimeTotal", (short)this.totalCookTime);
 		
 		NBTTagList list = new NBTTagList();
 		
@@ -184,18 +206,17 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 		
 		nbt.setTag("items", list);
 		
-		if(this.hasCustomInventoryName())
+		if(this.hasCustomName())
 		{
 			nbt.setString("CustomName", this.localizedName);
 		}
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		return tileEntityInvalid;
-
-		// return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : entityplayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
-	}
+	public boolean isUseableByPlayer(EntityPlayer player)
+    {
+        return this.worldObj.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
+    }
 
 	//@Override
 	public void openInventory() {}
@@ -270,26 +291,34 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 		}
 		
 	}*/
-	//@Override
-	public void updateEntity()
+	
+
+	public void update()
     {
-        boolean flag = this.burnTime > 0;
+        boolean flag = this.isBurning();
         boolean flag1 = false;
 
-        if (this.burnTime > 0)
+        if (this.isBurning())
         {
             --this.burnTime;
         }
 
         if (!this.worldObj.isRemote)
         {
-            if (this.burnTime != 0 || this.slots[1] != null && this.slots[0] != null)
+            if (!this.isBurning() && (this.slots[1] == null || this.slots[0] == null))
             {
-                if (this.burnTime == 0 && this.canSmelt())
+                if (!this.isBurning() && this.cookTime > 0)
                 {
-                    this.currentItemBurnTime = this.burnTime = getItemBurnTime(this.slots[1]);
+                    this.cookTime = MathHelper.clamp_int(this.cookTime - 2, 0, this.totalCookTime);
+                }
+            }
+            else
+            {
+                if (!this.isBurning() && this.canSmelt())
+                {
+                	this.currentItemBurnTime = this.burnTime = getItemBurnTime(this.slots[1]);
 
-                    if (this.burnTime > 0)
+                    if (this.isBurning())
                     {
                         flag1 = true;
 
@@ -309,9 +338,10 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
                 {
                     ++this.cookTime;
 
-                    if (this.cookTime == 200)
+                    if (this.cookTime == this.totalCookTime)
                     {
                         this.cookTime = 0;
+                        this.totalCookTime = this.getFurnaceBurnTime(this.slots[0]);
                         this.smeltItem();
                         flag1 = true;
                     }
@@ -322,10 +352,10 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
                 }
             }
 
-            if (flag != this.burnTime > 0)
+            if (flag != this.isBurning())
             {
                 flag1 = true;
-               // LapisFurnace.updateLapisFurnaceBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                BlockFurnace.setState(this.isBurning(), this.worldObj, this.pos);
             }
         }
 
@@ -333,7 +363,7 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
         {
             this.markDirty();
         }
-    }	
+    }
 	
 	private boolean canSmelt()
 	{
@@ -343,30 +373,34 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
         }
         else
         {
-            //ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
-           // if (itemstack == null) return false;
-            //if (this.slots[2] == null) return true;
-           // if (!this.slots[2].isItemEqual(itemstack)) return false;
-           // int result = slots[2].stackSize + itemstack.stackSize;
-           // result <= getInventoryStackLimit() && result <= this.slots[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
+            ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.slots[0]);
+            if (itemstack == null) return false;
+            if (this.slots[2] == null) return true;
+            if (!this.slots[2].isItemEqual(itemstack)) return false;
+            int result = slots[2].stackSize + itemstack.stackSize;
+            return result <= getInventoryStackLimit() && result <= this.slots[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
-		return tileEntityInvalid;
 	}
 	
 	public void smeltItem()
 	{
 		if (this.canSmelt())
         {
-            //ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
+            ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.slots[0]);
 
             if (this.slots[2] == null)
             {
-               // this.slots[2] = itemstack.copy();
+                this.slots[2] = itemstack.copy();
             }
-           // else if (this.slots[2].getItem() == itemstack.getItem())
-            //{
-           //     this.slots[2].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
-           // }
+            else if (this.slots[2].getItem() == itemstack.getItem())
+            {
+                this.slots[2].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
+            }
+
+            if (this.slots[0].getItem() == Item.getItemFromBlock(Blocks.sponge) && this.slots[0].getMetadata() == 1 && this.slots[1] != null && this.slots[1].getItem() == Items.bucket)
+            {
+                this.slots[1] = new ItemStack(Items.water_bucket);
+            }
 
             --this.slots[0].stackSize;
 
@@ -378,49 +412,51 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 		
 	}
 	
-	/**Gets the time in tick in which the item burns.*/
-	 public static int getItemBurnTime(ItemStack itemstack)
-	    {
-	        if (itemstack == null)
-	        {
-	            return 0;
-	        }
-	        else
-	        {
-	            Item item = itemstack.getItem();
+	/**
+     * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
+     * fuel
+     */
+    public static int getItemBurnTime(ItemStack p_145952_0_)
+    {
+        if (p_145952_0_ == null)
+        {
+            return 0;
+        }
+        else
+        {
+            Item item = p_145952_0_.getItem();
 
-	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
-	            {
-	                Block block = Block.getBlockFromItem(item);
+            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
+            {
+               Block block = Block.getBlockFromItem(item);
+/*
+                if (block == Blocks.wooden_slab)
+                {
+                    return 150;
+                }
 
-	               /* if (block == Blocks.wooden_slab)
-	                {
-	                    return 150;
-	                }
+                if (block.getMaterial() == Material.wood)
+                {
+                    return 300;
+                }*/
 
-	                if (block.getMaterial() == Material.wood)
-	                {
-	                    return 300;
-	                }*/
+                if (block == Blocks.redstone_block)
+                {
+                    return 16000;
+                }
+            }
 
-	                if (block == Blocks.redstone_block)
-	                {
-	                    return 16000;
-	                }
-	            }
-
-	            /**if (item instanceof ItemTool && ((ItemTool)item).getToolMaterialName().equals("WOOD")) return 200;
-	            if (item instanceof ItemSword && ((ItemSword)item).getToolMaterialName().equals("WOOD")) return 200;
-	            if (item instanceof ItemHoe && ((ItemHoe)item).getToolMaterialName().equals("WOOD")) return 200;
-	            if (item == Items.stick) return 100;
-	            if (item == Items.coal) return 1600;
-	            if (item == Items.lava_bucket) return 20000;
-	            if (item == Item.getItemFromBlock(Blocks.sapling)) return 100;
-	            if (item == Items.blaze_rod) return 2400;*/
-	            if (item == Items.redstone) return 1600;
-	            return GameRegistry.getFuelValue(itemstack);
-	        }
-	    }
+            //if (item instanceof ItemTool && ((ItemTool)item).getToolMaterialName().equals("WOOD")) return 200;
+            //if (item instanceof ItemSword && ((ItemSword)item).getToolMaterialName().equals("WOOD")) return 200;
+            //if (item instanceof ItemHoe && ((ItemHoe)item).getMaterialName().equals("WOOD")) return 200;
+            //if (item == Items.stick) return 100;
+            //if (item == Items.coal) return 1600;
+           // if (item == Items.lava_bucket) return 20000;
+            //if (item == Item.getItemFromBlock(Blocks.sapling)) return 100;
+            if (item == Items.blaze_rod) return 2400;
+            return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(p_145952_0_);
+        }
+    }
 	
 	public static boolean isItemFuel(ItemStack itemstack)
 	{
@@ -467,77 +503,102 @@ public class TileEntityLapisFurnace extends TileEntity implements ISidedInventor
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
-	public void closeInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void closeInventory(EntityPlayer player) {}
 
 	@Override
 	public int getField(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		switch (id)
+        {
+            case 0:
+                return this.burnTime;
+            case 1:
+                return this.currentItemBurnTime;
+            case 2:
+                return this.cookTime;
+            case 3:
+                return this.totalCookTime;
+            default:
+                return 0;
+        }
 	}
 
 	@Override
 	public void setField(int id, int value) {
-		// TODO Auto-generated method stub
-		
+		switch (id)
+        {
+            case 0:
+                this.burnTime = value;
+                break;
+            case 1:
+                this.currentItemBurnTime = value;
+                break;
+            case 2:
+                this.cookTime = value;
+                break;
+            case 3:
+                this.totalCookTime = value;
+        }
 	}
 
 	@Override
 	public int getFieldCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 4;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		for (int i = 0; i < this.slots.length; ++i)
+        {
+            this.slots[i] = null;
+        }
 	}
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public IChatComponent getDisplayName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
-		// TODO Auto-generated method stub
-		return null;
+		return side == EnumFacing.DOWN ? slots_bottom : (side == EnumFacing.UP ? slots_top : slots_top);
 	}
 
 	@Override
-	public boolean canInsertItem(int index, ItemStack itemStackIn,
-			EnumFacing direction) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	/**
+     * Returns true if automation can insert the given item in the given slot from the given side. Args: slot, item,
+     * side
+     */
+    public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction)
+    {
+        return this.isItemValidForSlot(index, itemStackIn);
+    }
 
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack,
 			EnumFacing direction) {
-		// TODO Auto-generated method stub
-		return false;
+		if (direction == EnumFacing.DOWN && index == 1)
+        {
+            Item item = stack.getItem();
+
+            if (item != Items.water_bucket && item != Items.bucket)
+            {
+                return false;
+            }
+        }
+
+        return true;
 	}
+	
+	public static int getFurnaceBurnTime(ItemStack stack)
+	{
+		return 200;
+	}
+	
 }
 

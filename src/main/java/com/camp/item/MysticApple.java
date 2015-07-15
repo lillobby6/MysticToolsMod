@@ -7,11 +7,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.camp.creativetabs.CreativeTabsManager;
 import com.camp.lib.StringLibrary;
 
 public class MysticApple extends ItemFood{
+	
+	public static final String name = "MysticApple";
 
 	public MysticApple(int p_i45339_1_, float p_i45339_2_, boolean p_i45339_3_) {
 		super(p_i45339_1_, p_i45339_2_, p_i45339_3_);
@@ -20,6 +23,7 @@ public class MysticApple extends ItemFood{
 		this.setUnlocalizedName("MysticApple");
 		this.setCreativeTab(CreativeTabsManager.tabMysticFoods);
 		//this.setTextureName(StringLibrary.MODID + ":apple_diamond");
+		GameRegistry.registerItem(this, name);
 		
 	}
 	@Override
@@ -35,4 +39,10 @@ public class MysticApple extends ItemFood{
 			player.addExperience(100);
 		}
 	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
 }

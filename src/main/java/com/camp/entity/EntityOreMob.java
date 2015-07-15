@@ -23,7 +23,7 @@ public class EntityOreMob extends EntityAnimal{
 		this.tasks.addTask(2, new EntityAILookIdle(this));
 		this.tasks.addTask(3, new EntityAITempt(this, 1.2D, ItemManager.mysticIngot, false));
 		this.tasks.addTask(5, new EntityAISwimming(this));
-		//((this) this.getNavigator()).setAvoidsWater(true);
+		//this.getNavigator()).setAvoidsWater(true);
 	}
 	public boolean isAIEnabled()
 	{
@@ -45,6 +45,6 @@ public class EntityOreMob extends EntityAnimal{
 	}
 	protected Item getDropItem()
     {
-        return ItemManager.mortiumIngot;
+        return null;//ItemManager.mortiumIngot;
     }
 }

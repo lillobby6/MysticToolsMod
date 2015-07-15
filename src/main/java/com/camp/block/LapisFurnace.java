@@ -1,19 +1,27 @@
-/*package com.camp.block;
+package com.camp.block;
 
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
@@ -25,13 +33,15 @@ import com.camp.main.MainRegistry;
 import com.camp.tileEntity.TileEntityLapisFurnace;
 
 public class LapisFurnace extends BlockContainer{
+	
+    public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
 	private Random rand = new Random();
 	
 	private final boolean isActive;
 	
-	@SideOnly(Side.CLIENT)
-	private IIcon iconFront;
+	//@SideOnly(Side.CLIENT)
+	//private IIcon iconFront;
 	
 	private static boolean keepInventory;
 	
@@ -40,66 +50,76 @@ public class LapisFurnace extends BlockContainer{
 		super(Material.rock);
 		this.isActive = isActive;
 	}
-	@SideOnly(Side.CLIENT)
+	/*@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		this.blockIcon = iconRegister.registerIcon(StringLibrary.MODID + ":lapis_furnace_top");
 		this.iconFront = iconRegister.registerIcon(StringLibrary.MODID + (this.isActive ? ":lapis_furnace_front_on" : ":lapis_furnace_front_off"));
-	}
+	}*/
 	
-	@SideOnly(Side.CLIENT)
+	/*@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata){
 		return metadata == 0 && side == 3 ? this.iconFront : (side == metadata ? this.iconFront : this.blockIcon);
-	}
+	}*/
 	
 	public Item getItemDropped(int par1, Random random, int par3)
 	{
 		return Item.getItemFromBlock(BlockManager.lapisFurnaceIdle);
 	}
-	public void onBlockAdded(World world, int x, int y, int z){
-		super.onBlockAdded(world, x, y, z);
-		this.setDefaultDirection(world, x, y, z);
-	}
-	/**Sets the default direction.*
-	private void setDefaultDirection(World world, int x, int y, int z){
-		if(!world.isRemote){
-			Block block1 = world.getBlock(x, y, z - 1);
-			Block block2 = world.getBlock(x, y, z + 1);
-			Block block3 = world.getBlock(x - 1, y, z );
-			Block block4 = world.getBlock(x + 1, y, z);
-			byte b0 = 3; 
-			
-			if(block1.func_149730_j() && !block2.func_149730_j()){
-				b0 = 3;
-			}
-			
-			if(block2.func_149730_j() && !block1.func_149730_j()){
-				b0 = 2;
-			}
-			
-			if(block3.func_149730_j() && !block4.func_149730_j()){
-				b0 = 5;
-			}
-			if(block4.func_149730_j() && !block3.func_149730_j()){
-				b0 = 4;
-				
-			world.setBlockMetadataWithNotify(x, y, z, b0, 2);
-			}
-		}
-		
-	}
-		@Override
-		public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ){
-			if(!world.isRemote)
-			{
-				
-				FMLNetworkHandler.openGui(player, MainRegistry.instance, MainRegistry.guiIdLapisFurnace, world, x, y, z);
-				
-			}
-			
-			return true;
-			
-			}
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+    {
+        this.setDefaultFacing(worldIn, pos, state);
+    }
+	/**Sets the default direction.*/
+	 private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
+	    {
+	        if (!worldIn.isRemote)
+	        {
+	            Block block = worldIn.getBlockState(pos.north()).getBlock();
+	            Block block1 = worldIn.getBlockState(pos.south()).getBlock();
+	            Block block2 = worldIn.getBlockState(pos.west()).getBlock();
+	            Block block3 = worldIn.getBlockState(pos.east()).getBlock();
+	            EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+
+	            if (enumfacing == EnumFacing.NORTH && block.isFullBlock() && !block1.isFullBlock())
+	            {
+	                enumfacing = EnumFacing.SOUTH;
+	            }
+	            else if (enumfacing == EnumFacing.SOUTH && block1.isFullBlock() && !block.isFullBlock())
+	            {
+	                enumfacing = EnumFacing.NORTH;
+	            }
+	            else if (enumfacing == EnumFacing.WEST && block2.isFullBlock() && !block3.isFullBlock())
+	            {
+	                enumfacing = EnumFacing.EAST;
+	            }
+	            else if (enumfacing == EnumFacing.EAST && block3.isFullBlock() && !block2.isFullBlock())
+	            {
+	                enumfacing = EnumFacing.WEST;
+	            }
+
+	            worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
+	        }
+	    }
+	 @Override
+	 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ)
+	    {
+	        if (worldIn.isRemote)
+	        {
+	            return true;
+	        }
+	        else
+	        {
+	            TileEntityLapisFurnace tileentity = (TileEntityLapisFurnace) worldIn.getTileEntity(pos);
+
+	            if (tileentity instanceof TileEntityLapisFurnace)
+	            {
+	                playerIn.displayGUIChest((TileEntityLapisFurnace)tileentity);
+	            }
+
+	            return true;
+	        }
+	    }
 
 	
 	
@@ -112,151 +132,143 @@ public class LapisFurnace extends BlockContainer{
 		}
 		@Override
 		@SideOnly(Side.CLIENT)
-		public void randomDisplayTick(World world, int x, int y, int z, Random random)
-		{
-			if(this.isActive)
-			{
-				int direction = world.getBlockMetadata(x, y, z);
-				
-				float x1 = (float)x + 0.5F;
-				float y1 = (float)y + random.nextFloat();
-				float z1 = (float)z + 0.5F;
-				
-				float f = 0.52F;
-				float f1 = random.nextFloat() * 0.6F - 0.3F;
-				
-				if(direction == 4)
-				{
-					world.spawnParticle("smoke", (double)(x1 - f), (double)(y1), (double)(z1 + f1), 0.0D, 0.0D, 0.0D);
-					world.spawnParticle("flame", (double)(x1 - f), (double)(y1), (double)(z1 + f1), 0.0D, 0.0D, 0.0D);
-					world.spawnParticle("reddust", (double)(x1 - f), (double)(y1), (double)(z1 + f1), 0.0D, 0.0D, 0.0D);
+	    public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+	    {
+	        if (this.isActive)
+	        {
+	            EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+	            double d0 = (double)pos.getX() + 0.5D;
+	            double d1 = (double)pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
+	            double d2 = (double)pos.getZ() + 0.5D;
+	            double d3 = 0.52D;
+	            double d4 = rand.nextDouble() * 0.6D - 0.3D;
 
-				}
-				else if(direction == 5)
-				{
-					world.spawnParticle("smoke", (double)(x1 + f), (double)(y1), (double)(z1 + f1), 0.0D, 0.0D, 0.0D);
-					world.spawnParticle("flame", (double)(x1 + f), (double)(y1), (double)(z1 + f1), 0.0D, 0.0D, 0.0D);
-					world.spawnParticle("reddust", (double)(x1 + f), (double)(y1), (double)(z1 + f1), 0.0D, 0.0D, 0.0D);
-
-				}
-				else if(direction == 2)
-				{
-					world.spawnParticle("smoke", (double)(x1 + f1), (double)(y1), (double)(z1 - f), 0.0D, 0.0D, 0.0D);
-					world.spawnParticle("flame", (double)(x1 + f1), (double)(y1), (double)(z1 - f), 0.0D, 0.0D, 0.0D);
-					world.spawnParticle("reddust", (double)(x1 + f1), (double)(y1), (double)(z1 - f), 0.0D, 0.0D, 0.0D);
-				} 
-				else if(direction == 3)
-				{
-					world.spawnParticle("smoke", (double)(x1 + f1), (double)(y1), (double)(z1 + f), 0.0D, 0.0D, 0.0D);
-					world.spawnParticle("flame", (double)(x1 + f1), (double)(y1), (double)(z1 + f), 0.0D, 0.0D, 0.0D);
-					world.spawnParticle("reddust", (double)(x1 + f1), (double)(y1), (double)(z1 + f), 0.0D, 0.0D, 0.0D);
-				}
-				
-				
-			}
-		}
-		@Override
-		public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack itemstack){
-			int l = MathHelper.floor_double((double) (entityLivingBase.rotationYaw * 4.0F / 360.0F)+ 0.5D) & 3;
-			
-			if(l == 0){
-				world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-			}
-			
-			if(l == 1){
-				world.setBlockMetadataWithNotify(x, y, z, 5, 2);
-			}
-			if(l == 2){
-				world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-			}
-			
-			if(l == 3){
-				world.setBlockMetadataWithNotify(x, y, z, 4, 2);
-			}
-			
-			if(itemstack.hasDisplayName()){
-				((TileEntityLapisFurnace)world.getTileEntity(x, y, z)).setGuiDisplayName(itemstack.getDisplayName());
-			}
-		}
+	            switch (LapisFurnace.SwitchEnumFacing.FACING_LOOKUP[enumfacing.ordinal()])
+	            {
+	                case 1:
+	                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - d3, d1, d2 + d4, 0.0D, 0.0D, 0.0D, new int[0]);
+	                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - d3, d1, d2 + d4, 0.0D, 0.0D, 0.0D, new int[0]);
+	                    break;
+	                case 2:
+	                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d3, d1, d2 + d4, 0.0D, 0.0D, 0.0D, new int[0]);
+	                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d3, d1, d2 + d4, 0.0D, 0.0D, 0.0D, new int[0]);
+	                    break;
+	                case 3:
+	                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 - d3, 0.0D, 0.0D, 0.0D, new int[0]);
+	                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 - d3, 0.0D, 0.0D, 0.0D, new int[0]);
+	                    break;
+	                case 4:
+	                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 + d3, 0.0D, 0.0D, 0.0D, new int[0]);
+	                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 + d3, 0.0D, 0.0D, 0.0D, new int[0]);
+	            }
+	        }
+	    }
 		
-		public static void updateLapisFurnaceBlockState(boolean active, World worldObj, int xCoord, int yCoord, int zCoord)
+		@SideOnly(Side.CLIENT)
+	    static final class SwitchEnumFacing
+	        {
+	            static final int[] FACING_LOOKUP = new int[EnumFacing.values().length];
+	            private static final String __OBFID = "CL_00002111";
+
+	            static
+	            {
+	                try
+	                {
+	                    FACING_LOOKUP[EnumFacing.WEST.ordinal()] = 1;
+	                }
+	                catch (NoSuchFieldError var4)
+	                {
+	                    ;
+	                }
+
+	                try
+	                {
+	                    FACING_LOOKUP[EnumFacing.EAST.ordinal()] = 2;
+	                }
+	                catch (NoSuchFieldError var3)
+	                {
+	                    ;
+	                }
+
+	                try
+	                {
+	                    FACING_LOOKUP[EnumFacing.NORTH.ordinal()] = 3;
+	                }
+	                catch (NoSuchFieldError var2)
+	                {
+	                    ;
+	                }
+
+	                try
+	                {
+	                    FACING_LOOKUP[EnumFacing.SOUTH.ordinal()] = 4;
+	                }
+	                catch (NoSuchFieldError var1)
+	                {
+	                    ;
+	                }
+	            }
+	        }
+		
+		@Override
+		public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+	    {
+	        worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
+
+	        if (stack.hasDisplayName())
+	        {
+	            TileEntity tileentity = worldIn.getTileEntity(pos);
+
+	            if (tileentity instanceof TileEntityFurnace)
+	            {
+	                ((TileEntityFurnace)tileentity).setCustomInventoryName(stack.getDisplayName());
+	            }
+	        }
+	    }
+		
+		public static void updateLapisFurnaceBlockState(boolean active, World worldObj, BlockPos pos)
 		{
-			int i = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+			//int i = worldObj.getBlockMetadata(pos);
 			
-			TileEntity tileentity = worldObj.getTileEntity(xCoord, yCoord, zCoord);
+			TileEntity tileentity = worldObj.getTileEntity(new BlockPos(pos));
 			keepInventory = true;
 			
 			if(active)
 			{
-				worldObj.setBlock(xCoord, yCoord, zCoord, BlockManager.lapisFurnaceActive);
+			//	worldObj.setBlock(xCoord, yCoord, zCoord, BlockManager.lapisFurnaceActive);
 			}
 			else
-				worldObj.setBlock(xCoord, yCoord, zCoord, BlockManager.lapisFurnaceIdle);
+			//	worldObj.setBlock(xCoord, yCoord, zCoord, BlockManager.lapisFurnaceIdle);
 			
 			keepInventory = false;
 			
-			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, i, 2);
+			//worldObj.setBlockMetadataWithNotify(pos, i, 2);
 			
 			if(tileentity != null)
 			{
 				tileentity.validate();
-					worldObj.setTileEntity(xCoord, yCoord, zCoord, tileentity);
+					worldObj.setTileEntity(new BlockPos(pos), tileentity);
 				
 				
 			}
 		}
 
 		@Override
-		public void breakBlock(World world, int x, int y, int z, Block oldBlock, int oldMetadata)
-		{
-			if(!keepInventory)
-			{
-				TileEntityLapisFurnace tileentity = (TileEntityLapisFurnace) world.getTileEntity(x, y, z);
-				
-				if(tileentity != null)
-				{
-					for(int i = 0; i < tileentity.getSizeInventory(); i++)
-					{
-						ItemStack itemstack = tileentity.getStackInSlot(i);
-						
-						if(itemstack != null)
-						{
-							float f = this.rand.nextFloat() * 0.8f + 0.1f;
-							float f1 = this.rand.nextFloat() * 0.8f + 0.1f;
-							float f2 = this.rand.nextFloat() * 0.8f + 0.1f;
-							
-							while (itemstack.stackSize > 0)
-	                        {
-	                            int j1 = this.rand.nextInt(21) + 10;
+		public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+	    {
+	        if (!keepInventory)
+	        {
+	            TileEntity tileentity = worldIn.getTileEntity(pos);
 
-	                            if (j1 > itemstack.stackSize)
-	                            {
-	                                j1 = itemstack.stackSize;
-	                            }
+	            if (tileentity instanceof TileEntityFurnace)
+	            {
+	                InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityFurnace)tileentity);
+	                worldIn.updateComparatorOutputLevel(pos, this);
+	            }
+	        }
 
-	                            itemstack.stackSize -= j1;
-	                            EntityItem entityitem = new EntityItem(world, (double)((float)x + f), (double)((float)y + f1), (double)((float)z + f2), new ItemStack(itemstack.getItem(), j1, itemstack.getItemDamage()));
-
-	                            if (itemstack.hasTagCompound())
-	                            {
-	                                entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
-	                            }
-
-	                            float f3 = 0.05F;
-	                            entityitem.motionX = (double)((float)this.rand.nextGaussian() * f3);
-	                            entityitem.motionY = (double)((float)this.rand.nextGaussian() * f3 + 0.2F);
-	                            entityitem.motionZ = (double)((float)this.rand.nextGaussian() * f3);
-	                            world.spawnEntityInWorld(entityitem);
-	                        }
-						}
-					}
-					
-					world.func_147453_f(x, y, z, oldBlock);
-				}
-			}
-			
-			super.breakBlock(world, x, y, z, oldBlock, oldMetadata);
-		}
+	        super.breakBlock(worldIn, pos, state);
+	    }
 		
 		@Override
 		public boolean hasComparatorInputOverride()
@@ -265,9 +277,9 @@ public class LapisFurnace extends BlockContainer{
 		}
 		
 		@Override
-		public int getComparatorInputOverride(World world, int x, int y, int z, int i)
+		public int getComparatorInputOverride(World worldIn, BlockPos pos)
 		{
-			return Container.calcRedstoneFromInventory((IInventory)world.getTileEntity(x, y, z));
+			return Container.calcRedstone(worldIn.getTileEntity(pos));
 		}
 		
 
@@ -276,4 +288,4 @@ public class LapisFurnace extends BlockContainer{
 			return Item.getItemFromBlock(BlockManager.lapisFurnaceIdle);
 		}
 	
-}	*/
+}	

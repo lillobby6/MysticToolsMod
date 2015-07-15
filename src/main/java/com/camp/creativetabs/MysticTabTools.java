@@ -16,7 +16,7 @@ public class MysticTabTools extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() {
 		// TODO Auto-generated method stub
-		return Item.getItemFromBlock(Blocks.stone);//ItemManager.mysticPickaxe;
+		return ItemManager.mysticPickaxe;
 	}
 
 }
